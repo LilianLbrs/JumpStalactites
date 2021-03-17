@@ -1,5 +1,8 @@
 #include "Map.h"
 #include <cassert>
+#include <fstream>
+#include <string.h>
+using namespace std;
 
 const char earth [20][31] = {
     "##############################",
@@ -27,9 +30,21 @@ const char earth [20][31] = {
 Map::Map() {
     dimx = 30;
     dimy = 20;
-    for(int x=0;x<dimx;++x)
-		for(int y=0;y<dimy;++y)
-			mapTable[x][y] = earth[dimy-1-y][x];
+    loadMapFromFile();
+
+}
+
+void Map::loadMapFromFile() {
+    ifstream file ("../data/map.txt", ios::binary);
+    file >> noskipws;
+    string line;
+    assert(file.is_open());
+    for(int y=0;y<dimy;++y){
+        getline(file, line);
+		for(int x=0;x<dimx;++x)
+			mapTable[x][y] = line[x];
+    }
+
 }
 
 bool Map::isPosPlayerValid (int x, int y) const {

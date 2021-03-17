@@ -11,6 +11,7 @@ class Map {
     public:
 
         Map();
+        void loadMapFromFile ();
         bool isPosPlayerValid (int x, int y) const;
         char getXY (const int x, const int y) const;
         int getDimX () const;
