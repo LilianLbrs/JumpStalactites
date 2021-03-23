@@ -10,6 +10,7 @@
 
 void txtAff(WinTXT & win, const Jeu & jeu) {
 	const Map& map = jeu.getConstMap();
+	const Player& player = jeu.getConstPlayer();
 
 	win.clear();
 
@@ -17,6 +18,9 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	for(int x=0;x<map.getDimX();++x)
 		for(int y=0;y<map.getDimY();++y)
 			win.print(x,y,map.getXY(x,y));
+
+	// Affichage de Pacman
+	win.print(player.getPosX(),player.getPosY(),'P');
 
 	win.draw();
 }
@@ -27,7 +31,7 @@ void txtBoucle (Jeu & jeu) {
     WinTXT win (jeu.getConstMap().getDimX(),jeu.getConstMap().getDimY());
 
 	bool ok = true;
-	//int c;
+	int c;
 
 	do {
 	    txtAff(win,jeu);
@@ -37,8 +41,8 @@ void txtBoucle (Jeu & jeu) {
 		#else
 		usleep(100000);
         #endif // WIN32
-
-		/*c = win.getCh();
+		
+		c = win.getCh();
 		switch (c) {
 			case 'q':
 				jeu.actionClavier('q');
@@ -46,13 +50,15 @@ void txtBoucle (Jeu & jeu) {
 			case 'd':
 				jeu.actionClavier('d');
 				break;
-			case 'space':
-				jeu.actionClavier('space');
+			case ' ':
+				jeu.actionClavier(' ');
 				break;
-			case 'escape':
+			/*case 'escape':
 				jeu.actionClavier('escape');
-				break;
-		}*/
+				break;*/
+		}
+
+		jeu.gravity();
 
 	} while (ok);
 

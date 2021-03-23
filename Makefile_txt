@@ -15,11 +15,11 @@ obj/winTxt.o: src/txt/winTxt.cpp
 obj/Jeu.o: src/core/Jeu.cpp src/core/Jeu.h
 	g++ -g -Wall -c src/core/Jeu.cpp -o obj/Jeu.o
 
-obj/Map.o: src/core/Map.cpp src/core/Map.h
-	g++ -g -Wall -c src/core/Map.cpp -o obj/Map.o
-
 obj/Player.o: src/core/Player.cpp src/core/Player.h
 	g++ -g -Wall -c src/core/Player.cpp -o obj/Player.o
+
+obj/Map.o: src/core/Map.cpp src/core/Map.h
+	g++ -g -Wall -c src/core/Map.cpp -o obj/Map.o
 
 clean:	
 		rm -rf obj/* bin/* data/*
