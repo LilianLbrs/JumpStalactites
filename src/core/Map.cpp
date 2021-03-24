@@ -24,7 +24,7 @@ void Map::loadMapFromFile() {
 
 }
 
-bool Map::isPosPlayerValid (int x, int y) const {
+bool Map::isPosValid (int x, int y) const {
 	return ((x>=0) && (x<dimx) && (y>=0) && (y<dimy) && (mapTable[x][y]!='#'));
 }
 

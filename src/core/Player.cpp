@@ -18,20 +18,19 @@ Player::Player (float posX, float posY) {
 }
 
 void Player::left (const Map& m) {
-    if (m.isPosPlayerValid(posX-1,posY)) posX--;
+    if (m.isPosValid(posX-1,posY)) posX--;
 }
 
 void Player::right (const Map& m) {
-    if (m.isPosPlayerValid(posX+1,posY)) posX++;
+    if (m.isPosValid(posX+1,posY)) posX++;
 }
 
 void Player::jump (const Map& m) {
     if (isFalling) return;
     else {
-        if (m.isPosPlayerValid(posX,posY) && m.isPosPlayerValid(posX,posY-1) && m.isPosPlayerValid(posX,posY-2) && m.isPosPlayerValid(posX,posY-3)) posY-=4;
-        else if (m.isPosPlayerValid(posX,posY) && m.isPosPlayerValid(posX,posY-1) && m.isPosPlayerValid(posX,posY-2)) posY -= 3;
-        else if (m.isPosPlayerValid(posX,posY) && m.isPosPlayerValid(posX,posY-1)) posY-=2;
-        else if (m.isPosPlayerValid(posX,posY)) posY --;
+        if (m.isPosValid(posX,posY) && m.isPosValid(posX,posY-1) && m.isPosValid(posX,posY-2) && m.isPosValid(posX,posY-3)) posY-=4;
+        else if (m.isPosValid(posX,posY) && m.isPosValid(posX,posY-1) && m.isPosValid(posX,posY-2)) posY -= 3;
+        else if (m.isPosValid(posX,posY)) posY --;
     }
 }
 

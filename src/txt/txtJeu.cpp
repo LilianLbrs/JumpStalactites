@@ -5,12 +5,18 @@
 #include <unistd.h>
 #endif // WIN32
 #include "winTxt.h"
+#include <time.h> 
+#include <string.h>
 
 #include "../core/Jeu.h"
 
 void txtAff(WinTXT & win, const Jeu & jeu) {
 	const Map& map = jeu.getConstMap();
 	const Player& player = jeu.getConstPlayer();
+	Stalactites stalactite[5];
+	for (int i = 0; i < 5; i++){
+		stalactite[i] = jeu.getStalactite(i);
+	}
 
 	win.clear();
 
@@ -22,10 +28,23 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 	// Affichage de Pacman
 	win.print(player.getPosX(),player.getPosY(),'P');
 
+	//Affichage des stalactites
+	for(int i = 0; i<5; i++){
+		if (!stalactite[i].hidden) win.print(stalactite[i].posX,stalactite[i].posY,'|');
+	}
+
 	win.draw();
 }
 
+void endGame (WinTXT & win, const Jeu & jeu) {
+	win.clear();
+	printf ("Fin de partie \n");
+	win.pause();
+}
+
 void txtBoucle (Jeu & jeu) {
+	srand (time(NULL));
+
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT win (jeu.getConstMap().getDimX(),jeu.getConstMap().getDimY());
@@ -60,6 +79,15 @@ void txtBoucle (Jeu & jeu) {
 
 		jeu.gravity();
 
+		int i =0;
+		while (i<5) {
+			ok = !jeu.actionsAuto(rand() % 5 + 1, (rand()% jeu.getDimMapX() +1), i);
+			if (!ok) i = 6;
+			i++;
+		}
+
 	} while (ok);
+
+	endGame(win, jeu);
 
 }
