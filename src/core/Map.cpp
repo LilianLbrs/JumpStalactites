@@ -12,7 +12,7 @@ Map::Map() {
 }
 
 void Map::loadMapFromFile() {
-    ifstream file ("../data/map.txt", ios::binary);
+    ifstream file ("data/map.txt", ios::binary);
     file >> noskipws;
     string line;
     assert(file.is_open());
