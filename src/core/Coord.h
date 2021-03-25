@@ -1,6 +1,12 @@
 #ifndef _COORD_H
 #define _COORD_H
 
+/**
+ * \file Coord.h
+ * \brief Module gérant les coordonnées des éléments du jeu
+ * \version 0.1
+ * \date 20/03/2021
+ */
 class Coord{
 private:
     float position_X;

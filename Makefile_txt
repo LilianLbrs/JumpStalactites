@@ -24,5 +24,5 @@ obj/Stalactites.o: src/core/Stalactites.cpp src/core/Stalactites.h
 obj/Map.o: src/core/Map.cpp src/core/Map.h
 	g++ -g -Wall -c src/core/Map.cpp -o obj/Map.o
 
-clean:	
+clear:	
 		rm -rf obj/* bin/* data/*

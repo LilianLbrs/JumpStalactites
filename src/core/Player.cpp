@@ -30,6 +30,7 @@ void Player::jump (const Map& m) {
     else {
         if (m.isPosValid(posX,posY) && m.isPosValid(posX,posY-1) && m.isPosValid(posX,posY-2) && m.isPosValid(posX,posY-3)) posY-=4;
         else if (m.isPosValid(posX,posY) && m.isPosValid(posX,posY-1) && m.isPosValid(posX,posY-2)) posY -= 3;
+        else if (m.isPosValid(posX,posY) && m.isPosValid(posX,posY-1)) posY -= 2;
         else if (m.isPosValid(posX,posY)) posY --;
     }
 }

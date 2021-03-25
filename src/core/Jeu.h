@@ -5,6 +5,13 @@
 #include "Player.h"
 #include "Stalactites.h"
 
+/**
+ * \file Jeu.h
+ * \brief Module gérant la partie en cours
+ * \version 0.1
+ * \date 20/03/2021
+ */
+
 class Jeu {
 
 private :

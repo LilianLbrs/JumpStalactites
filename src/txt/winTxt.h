@@ -1,14 +1,19 @@
 #ifndef WINTXT_H
 #define WINTXT_H
 
-//! \brief une fenêtre texte est un tableau 2D de caractères
+/**
+ * \file winTxt.h
+ * \brief Module gÃ©rant la fenÃªtre texte comme un tableau 2D de caractÃ¨res
+ * \version 0.1
+ * \date 20/03/2021
+ */
 class WinTXT
 {
 private:
 
     int dimx;       //!< \brief largeur
     int dimy;       //!< \brief heuteur
-    char* win;      //!< \brief stocke le contenu de la fenêtre dans un tableau 1D mais on y accede en 2D
+    char* win;      //!< \brief stocke le contenu de la fenÃªtre dans un tableau 1D mais on y accede en 2D
 
 public:
 
