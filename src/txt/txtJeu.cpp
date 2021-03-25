@@ -5,7 +5,7 @@
 #include <unistd.h>
 #endif // WIN32
 #include "winTxt.h"
-#include <time.h> 
+#include <time.h>
 #include <string.h>
 
 #include "../core/Jeu.h"
@@ -30,7 +30,7 @@ void txtAff(WinTXT & win, const Jeu & jeu) {
 
 	//Affichage des stalactites
 	for(int i = 0; i<5; i++){
-		if (!stalactite[i].hidden) win.print(stalactite[i].posX,stalactite[i].posY,'|');
+		if (!stalactite[i].hidden) win.print(stalactite[i].coord.getPosx(),stalactite[i].coord.getPosy(),'|');
 	}
 
 	win.draw();
@@ -60,7 +60,7 @@ void txtBoucle (Jeu & jeu) {
 		#else
 		usleep(100000);
         #endif // WIN32
-		
+
 		c = win.getCh();
 		switch (c) {
 			case 'q':

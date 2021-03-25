@@ -11,23 +11,23 @@ Coord::Coord(const Coord & pos){
     position_Y=pos.getPosy();
 }
 
-Coord::Coord(const float posx,const float posy){
+Coord::Coord(const int posx,const int posy){
     position_X=posx;
     position_Y=posy;
 }
 
-Coord::getPosx()const{return position_X;}
+int Coord::getPosx()const{return position_X;}
 
-Coord::getPosy()const{return position_Y;}
+int Coord::getPosy()const{return position_Y;}
 
-Coord::setPos(const Coord & pos){
+void Coord::setPos(const Coord & pos){
     position_X=pos.getPosx();
     position_Y=pos.getPosy();}
 
-Coord::setPos(const float posx,const float posy){
+void Coord::setPos(const int posx,const int posy){
     position_X=posx;
     position_Y=posy;}
 
-Coord::setPosx(const float posx){position_X=posx;}
+void Coord::setPosx(const int posx){position_X=posx;}
 
-Coord::setPosy(const float posy){position_Y=posy;}
+void Coord::setPosy(const int posy){position_Y=posy;}

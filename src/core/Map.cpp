@@ -29,6 +29,10 @@ bool Map::isPosValid (int x, int y) const {
 	return ((x>=0) && (x<dimx) && (y>=0) && (y<dimy) && (mapTable[x][y]!='#'));
 }
 
+bool Map::isPosValid (Coord& pos) const {
+	return ((pos.getPosx()>=0) && (pos.getPosx()<dimx) && (pos.getPosy()>=0) && (pos.getPosy()<dimy) && (mapTable[pos.getPosx()][pos.getPosy()]!='#'));
+}
+
 char Map::getXY (const int x, const int y) const {
     assert(x>=0);
 	assert(y>=0);

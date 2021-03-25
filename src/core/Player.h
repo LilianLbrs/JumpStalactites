@@ -16,21 +16,22 @@
 class Player {
     private :
 
-        int posX, posY;
+        Coord coord;
         int velX, velY;
         bool isFalling;
 
     public :
 
         Player ();
-        Player (float posX, float posY);
+        Player (int posX, int posY);
+        Player (Coord& pos);
 
         void checkIfFalling (const Map& m);
         void left (const Map& m);
         void right (const Map& m);
         void jump (const Map& m);
-        int getPosX () const;
-        int getPosY () const;
+        int getPosX() const;
+        int getPosY() const;
 };
 
 #endif

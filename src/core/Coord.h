@@ -9,20 +9,20 @@
  */
 class Coord{
 private:
-    float position_X;
-    float position_Y;
+    int position_X;
+    int position_Y;
 
 public:
     Coord();
-    Coord(const float posx, const float posy);
+    Coord(const int posx, const int posy);
     Coord(const Coord & pos);
-    float getPosx() const;
-    float getPosy() const;
+    int getPosx() const;
+    int getPosy() const;
     void setPos(const Coord & pos);
-    void setPos(const float posx, const float posy);
-    void setPosx(const float posx);
-    void setPosy(const float posy);
+    void setPos(const int posx, const int posy);
+    void setPosx(const int posx);
+    void setPosy(const int posy);
 
-}
+};
 
 #endif

@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Stalactites.h"
+#include "Coord.h"
 
 /**
  * \file Jeu.h

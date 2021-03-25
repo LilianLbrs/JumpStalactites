@@ -3,6 +3,7 @@
 
 #include "Map.h"
 #include "Player.h"
+#include "Coord.h"
 
 /**
  * \file Stalactites.h
@@ -12,12 +13,12 @@
  */
 
 class Stalactites {
-    private: 
-    
+    private:
+
 
     public:
     bool hidden;
-    int posX, posY;
+    Coord coord;
 
     Stalactites ();
     Stalactites (int posX);

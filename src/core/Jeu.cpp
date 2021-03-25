@@ -21,9 +21,9 @@ void Jeu::actionClavier (const char touche) {
 
 bool Jeu::actionsAuto (int h, int posX, int i) {
 	bool endGame = false;
-	if (stalactite[i].posY >= map.getDimY()) {
-		stalactite[i].posX = posX;
-		stalactite[i].posY = h;
+	if (stalactite[i].coord.getPosy() >= map.getDimY()) {
+		stalactite[i].coord.setPosx(posX);
+		stalactite[i].coord.setPosy(h);
 	}
 	else endGame = stalactite[i].updateStalactite(map, player);
 

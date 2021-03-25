@@ -1,32 +1,32 @@
 #include "Stalactites.h"
 
 Stalactites::Stalactites () {
-    posX = 1;
-    posY = 1;
+    coord.setPosx(1);
+    coord.setPosy(1);
 }
 
 Stalactites::Stalactites (int posX) {
-    this->posX = posX;
-    posY = 1;
+    this->coord.setPosx(posX);
+    coord.setPosy(1);
 }
 
 void Stalactites::operator=(const Stalactites& s) {
-    this->posX = s.posX;
-    this->posY = s.posY;
+    this->coord.setPosx(s.coord.getPosx());
+    this->coord.setPosy(s.coord.getPosy());
     this->hidden = s.hidden;
 }
 
 bool Stalactites::updateStalactite(const Map& m, const Player& p) {
     bool endGame = false;
-    if (posX == p.getPosX() && posY == p.getPosY()) endGame = true;
-    else if (m.isPosValid(posX, posY+1)) {
-        posY ++;
+    if (coord.getPosx() == p.getPosX() && coord.getPosy() == p.getPosY()) endGame = true;
+    else if (m.isPosValid(coord.getPosx(), coord.getPosy() +1)) {
+        coord.setPosy(coord.getPosy() +1);
         hidden = false;
         }
     else{
-        posY ++;
+        coord.setPosy(coord.getPosy()+1);
         hidden = true;
     }
     return endGame;
-    
+
 }

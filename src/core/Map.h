@@ -1,6 +1,8 @@
 #ifndef _MAP_H
 #define _MAP_H
 
+#include "Coord.h"
+
 /**
  * \file Map.h
  * \brief Module gérant la carte du jeu
@@ -10,7 +12,7 @@
 
 class Map {
     private:
-    
+
         int dimx;
         int dimy;
         char mapTable [100][100];
@@ -20,6 +22,7 @@ class Map {
         Map();
         void loadMapFromFile ();
         bool isPosValid (int x, int y) const;
+        bool isPosValid (Coord& pos) const;
         char getXY (const int x, const int y) const;
         int getDimX () const;
         int getDimY () const;
