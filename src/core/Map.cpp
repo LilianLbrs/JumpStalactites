@@ -13,9 +13,10 @@ Map::Map() {
 
 void Map::loadMapFromFile() {
     ifstream file ("data/map.txt", ios::binary);
+    if (!file.is_open()) {file.open("../data/map.txt", ios::binary);}
+    assert (file.is_open());
     file >> noskipws;
     string line;
-    assert(file.is_open());
     for(int y=0;y<dimy;++y){
         getline(file, line);
 		for(int x=0;x<dimx;++x)

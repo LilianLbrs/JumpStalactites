@@ -1,6 +1,13 @@
 #ifndef _MAP_H
 #define _MAP_H
 
+/**
+ * \file Map.h
+ * \brief Module gérant la carte du jeu
+ * \version 0.1
+ * \date 20/03/2021
+ */
+
 class Map {
     private:
     

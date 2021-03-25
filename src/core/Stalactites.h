@@ -4,6 +4,13 @@
 #include "Map.h"
 #include "Player.h"
 
+/**
+ * \file Stalactites.h
+ * \brief Module gérant les stalactites et leur mouvement
+ * \version 0.1
+ * \date 20/03/2021
+ */
+
 class Stalactites {
     private: 
     
