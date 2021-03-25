@@ -12,10 +12,10 @@ public:
     Coord(const Coord & pos);
     float getPosx() const;
     float getPosy() const;
-    Coord setPos(const Coord & pos);
-    Coord setPos(const float posx, const float posy);
-    Coord setPosx(const float posx);
-    Coord setPosy(const float posy);
+    void setPos(const Coord & pos);
+    void setPos(const float posx, const float posy);
+    void setPosx(const float posx);
+    void setPosy(const float posy);
 
 }
 
