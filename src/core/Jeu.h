@@ -30,6 +30,7 @@ public :
     const Map& getConstMap () const;
 
     const Player& getConstPlayer () const;
+    Player& getPlayer ();
 
     const Stalactites& getStalactite (int i) const;
 
