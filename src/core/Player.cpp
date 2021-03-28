@@ -5,7 +5,7 @@
 #define SPEED 1
 #define GRAVITY 1
 #define FPS 60
-#define JUMP -2
+#define JUMP -3
 
 Player::Player() {
     coord.setPos(1, 18); // /!\ les Y sont inversés
@@ -32,22 +32,23 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     int posX = coord.getPosx();
     int posY = coord.getPosy();
     velX = (rightPressed - leftPressed) * SPEED;
-    velY += GRAVITY;
     checkIfFalling(m);
+    velY = (isFalling) * GRAVITY;
+
 
     if (!isFalling && jumpPressed) velY = JUMP;
 
     coord.setPosx ( posX + velX);
     coord.setPosy (posY + velY);
 
-    if (posX <= 0)
-        coord.setPosx(0);
-    if(posX >= WIDTH - 32)
-        
+    if (coord.getPosx() < 0)
+        {coord.setPosx(0);}
+    if(coord.getPosx() >= m.getDimX()) coord.setPosx(m.getDimX()-1);
+
     if (coord.getPosy() <= 0)
-        coord.setPosy(0);
-    if (coord.getPosy() > 18)
-        coord.setPosy(18);
+        coord.setPosy(1);
+    if (coord.getPosy() > m.getDimY())
+        coord.setPosy(m.getDimY());
 }
 
 void Player::left (const Map& m) {

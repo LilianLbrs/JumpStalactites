@@ -9,7 +9,7 @@ using namespace std;
 const int TAILLE_SPRITE = 32;
 
 float temps () {
-    return float(SDL_GetTicks()) / CLOCKS_PER_SEC;  // conversion des ms en secondes en divisant par 1000
+    return float(SDL_GetTicks())*10000 / CLOCKS_PER_SEC;  // conversion des ms en secondes en divisant par 1000
 }
 
 // ============= CLASS IMAGE =============== //
@@ -113,18 +113,18 @@ sdlJeu::sdlJeu () : jeu() {
     // Creation de la fenetre
     window = SDL_CreateWindow("JumpStalactites", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimWindowX, dimWindowY, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     if (window == NULL) {
-        cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl; 
-        SDL_Quit(); 
+        cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl;
+        SDL_Quit();
         exit(1);
     }
 
     renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
     // IMAGES
-    imPlayer.loadFromFile("../data/player.png",renderer);
-    imPlatform.loadFromFile("../data/platform.png",renderer);
-    imBackground.loadFromFile("../data/background.jpg",renderer);
-    
+    imPlayer.loadFromFile("data/player.png",renderer);
+    imPlatform.loadFromFile("data/platform.png",renderer);
+    imBackground.loadFromFile("data/background.jpg",renderer);
+
 }
 
 sdlJeu::~sdlJeu () {
@@ -234,6 +234,5 @@ void sdlJeu::sdlBoucle () {
         SDL_RenderPresent(renderer);
         SDL_Delay(30);
 	}
-    
+
 }
- 

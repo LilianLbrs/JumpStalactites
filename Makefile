@@ -1,9 +1,20 @@
-INCLUDE_DIR_SDL = -I./extern/SDL2/include/SDL2 \
-			-I./extern/SDL2_img/include/SDL2
+ifeq ($(OS),Windows_NT)
+	INCLUDE_DIR_SDL = 	-Iextern/SDL2_mingw-cb20/SDL2-2.0.12/x86_64-w64-mingw32/include/SDL2 \
+						-Iextern/SDL2_mingw-cb20/SDL2_ttf-2.0.15/x86_64-w64-mingw32/include/SDL2 \
+						-Iextern/SDL2_mingw-cb20/SDL2_image-2.0.5/x86_64-w64-mingw32/include/SDL2 \
+						-Iextern/SDL2_mingw-cb20/SDL2_mixer-2.0.4/x86_64-w64-mingw32/include/SDL2
 
-LIBS_SDL = -L./extern/SDL2/lib \
-		-L./extern/SDL2_img/lib \
-		-lmingw32 -lSDL2main -lSDL2.dll -lSDL2_image.dll
+	LIBS_SDL = -Lextern \
+			-Lextern/SDL2_mingw-cb20/SDL2-2.0.12/x86_64-w64-mingw32/lib \
+			-Lextern/SDL2_mingw-cb20/SDL2_ttf-2.0.15/x86_64-w64-mingw32/lib \
+			-Lextern/SDL2_mingw-cb20/SDL2_image-2.0.5/x86_64-w64-mingw32/lib \
+			-Lextern/SDL2_mingw-cb20/SDL2_mixer-2.0.4/x86_64-w64-mingw32/lib \
+			-lmingw32 -lSDL2main -lSDL2.dll -lSDL2_ttf.dll -lSDL2_image.dll -lSDL2_mixer.dll
+
+else
+	INCLUDE_DIR_SDL = -I/usr/include/SDL2
+	LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer
+endif
 
 CORE 	= core/Coord.cpp core/Map.cpp core/Stalactites.cpp core/Player.cpp core/Jeu.cpp
 SRCS_SDL = $(CORE) sdl2/sdlJeu.cpp sdl2/main_sdl.cpp
@@ -15,7 +26,7 @@ INCLUDE_DIR		= -Isrc -Isrc/core -Isrc/sdl2
 
 all: bin/JumpStalactites.exe
 
-bin/JumpStalactites.exe: $(SRCS_TXT:%.cpp) $(OBJS_SDL)
+bin/JumpStalactites.exe: $(SRCS_SDL:%.cpp) $(OBJS_SDL)
 	g++ $(OBJS_SDL) -o bin/JumpStalactites.exe $(LIBS_SDL)
 
 obj/main_sdl.o: src/sdl2/main_sdl.cpp
