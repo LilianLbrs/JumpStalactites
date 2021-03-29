@@ -37,22 +37,29 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     velY = (isFalling) * GRAVITY;
 
 
-    if (jumpPressed && canJump) {
-        jump(m);
-        canJump = false;
+    if (!isFalling && jumpPressed && jumpcount == 0) {
+            int i = -2;
+            while (m.isPosValid(coord.getPosx(), coord.getPosy() + i) && i > JUMP - 1)
+            {
+                i--;
+            }
+            jumpcount = i + 2;
     }
+    if (!isFalling && jumpcount < 0){
+                    velY = - GRAVITY;
+                    jumpcount ++;
+            }
 
     coord.setPosx ( posX + velX);
     coord.setPosy (posY + velY);
 
-    if (coord.getPosx() < 0)
+    if (posX < 0)
         coord.setPosx(0);
-    if(coord.getPosx() >= m.getDimX()) 
+    if(posX >= m.getDimX())
         coord.setPosx(m.getDimX()-1);
-
-    if (coord.getPosy() <= 0)
+    if (posY <= 0)
         coord.setPosy(1);
-    if (coord.getPosy() > m.getDimY())
+    if (posY > m.getDimY())
         coord.setPosy(m.getDimY());
 }
 

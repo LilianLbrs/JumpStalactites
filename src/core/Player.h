@@ -20,7 +20,7 @@ class Player {
         bool isFalling;
 
     public :
-        bool canJump;
+        int jumpcount;
 
         /**
          * \brief Constructeur par défaut de la classe Player, initialise le joueur en bas a gauche de la map
