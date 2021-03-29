@@ -54,5 +54,5 @@ clean:
 ifeq ($(OS),Windows_NT)
 	del /f obj\*.o bin\JumpStalactites_txt.exe bin\JumpStalactites.exe
 else
-	rm -rf obj\*.o bin\JumpStalactites_txt.exe bin\JumpStalactites.exe
+	rm -rf obj/*.o bin/JumpStalactites_txt.exe bin/JumpStalactites.exe
 endif
