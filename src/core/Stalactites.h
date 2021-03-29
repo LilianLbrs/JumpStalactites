@@ -7,11 +7,13 @@
 
 /**
  * \file Stalactites.h
- * \brief Module gérant les stalactites et leur mouvement
  * \version 0.1
  * \date 20/03/2021
  */
 
+/**
+ *\brief Module gérant les stalactites et leur mouvement
+ */
 class Stalactites {
     private:
 
@@ -19,6 +21,7 @@ class Stalactites {
     public:
     bool hidden;
     Coord coord;
+
 
     Stalactites ();
     Stalactites (int posX);

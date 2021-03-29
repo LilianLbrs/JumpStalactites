@@ -207,6 +207,7 @@ void sdlJeu::sdlBoucle () {
                 {
                     case SDL_SCANCODE_SPACE:
                     jumpPressed = false;
+                    jeu.getPlayer().canJump = true;
                     break;
                     case SDL_SCANCODE_A:
                     case SDL_SCANCODE_LEFT:
@@ -232,7 +233,7 @@ void sdlJeu::sdlBoucle () {
 
 		// on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
-        SDL_Delay(30);
+        SDL_Delay(1000/55);
 	}
 
 }

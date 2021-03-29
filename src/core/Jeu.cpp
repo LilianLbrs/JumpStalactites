@@ -30,11 +30,11 @@ bool Jeu::actionsAuto (int h, int posX, int i) {
 	return endGame;
 }
 
+Map& Jeu::getMap () { return map; }
+
 void Jeu::gravity () {
     player.checkIfFalling(map);
 }
-
-Map& Jeu::getMap () { return map; }
 
 const Map& Jeu::getConstMap () const { return map; }
 

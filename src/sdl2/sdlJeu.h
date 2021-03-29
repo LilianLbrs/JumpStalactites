@@ -6,7 +6,6 @@
 
 #include "../core/Jeu.h"
 
-//! \brief Pour g�rer une image avec SDL2
 class Image {
 
 private:

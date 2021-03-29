@@ -13,14 +13,54 @@ private:
     int position_Y;
 
 public:
+    /**
+     * \brief Constructeur par défaut de la classe coordonées
+     */
     Coord();
+
+    /**
+     * \brief Constructeur qui initialise les valeurs coordonées
+     *
+     *\param posx : valeur des abscisses
+     *\param posy : valeur en ordonnées (attention, axe des ordonnées inversé)
+     */
     Coord(const int posx, const int posy);
+
+    /**
+     * \brief Constructeur par copie valeurs de la classe coordonnées
+     *
+     *\param pos : coordonées à copier
+     */
     Coord(const Coord & pos);
+
+    /**
+     * \brief Accesseur qui retourne la valeur des abscisses
+     */
     int getPosx() const;
+    /**
+     * \brief Accesseur qui retourne la valeur des ordonnées
+     */
     int getPosy() const;
-    void setPos(const Coord & pos);
+    /**
+     * \brief Mutateur qui modifie les coordonnées avec les valeurs entières passées en paramètres
+     *
+     *\param posx : nouvelle valeur sur l'axe des abscisses
+     * \param posy : nouvelle valeur sur l'axe des ordonnées
+     */
     void setPos(const int posx, const int posy);
+    /**
+     * \brief Mutateur qui modifie les coordonées avec la valeur (classe Coord) passée en paramètre
+     *
+     * \param pos :  nouvelles coordonées
+     */
+    void setPos(const Coord& pos);
+    /**
+     * \brief Mutateur qui modifie la valeur des abscisses
+     */
     void setPosx(const int posx);
+    /**
+     * \brief Mutateur qui modifie la valeur des ordonnées
+     */
     void setPosy(const int posy);
 
 };

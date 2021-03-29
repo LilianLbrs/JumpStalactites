@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Jump Stalactites: C:/Users/lilia/Documents/Project/jump-stalactites/src/Player.h Source File</title>
+<title>JumpStalactites: C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/core/Player.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,9 +22,9 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Jump Stalactites
+   <div id="projectname">JumpStalactites
    </div>
-   <div id="projectbrief">A platformer written in C++ using SDL</div>
+   <div id="projectbrief">JumpStalactites is a 2D platformer made in C++ with SDL2</div>
   </td>
  </tr>
  </tbody>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,10 +71,45 @@ $(function() {
 <div class="title">Player.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _PLAYER_H</span></div>
+<a href="_player_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _PLAYER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _PLAYER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_map_8h.html">Map.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_player.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html">Player</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    private :</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="class_coord.html">Coord</a> coord;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">int</span> velX, velY;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordtype">bool</span> isFalling;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    public :</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">bool</span> canJump;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player</a> ();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player</a> (<span class="keywordtype">int</span> posX, <span class="keywordtype">int</span> posY);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player</a> (<a class="code" href="class_coord.html">Coord</a>&amp; pos);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a4f606768c09e14b74d7947081211242d">updatePlayerSdl</a> (<span class="keyword">const</span> <a class="code" href="class_map.html">Map</a>&amp; m, <span class="keywordtype">bool</span> rightPressed, <span class="keywordtype">bool</span> leftPressed, <span class="keywordtype">bool</span> jumpPressed);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a6ac120b913d3695cc33ff07652209ab6">checkIfFalling</a> (<span class="keyword">const</span> <a class="code" href="class_map.html">Map</a>&amp; m);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#abfd325af85472ee1777ed775f13fbc00">left</a> (<span class="keyword">const</span> <a class="code" href="class_map.html">Map</a>&amp; m);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#ac602415a749a08d43d8eeca6c12d844a">right</a> (<span class="keyword">const</span> <a class="code" href="class_map.html">Map</a>&amp; m);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a9b916dba7251c233eb0be631e0115b9c">jump</a> (<span class="keyword">const</span> <a class="code" href="class_map.html">Map</a>&amp; m);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_player.html#a1855ae5f29f7f22a4699733692e48fce">getPosX</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_player.html#a06487efec49f46828c3167bbe122bde7">getPosY</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;};</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_map_8h_html"><div class="ttname"><a href="_map_8h.html">Map.h</a></div><div class="ttdoc">Module gérant la carte du jeu.</div></div>
+<div class="ttc" id="aclass_coord_html"><div class="ttname"><a href="class_coord.html">Coord</a></div><div class="ttdef"><b>Definition:</b> Coord.h:10</div></div>
+<div class="ttc" id="aclass_map_html"><div class="ttname"><a href="class_map.html">Map</a></div><div class="ttdef"><b>Definition:</b> Map.h:13</div></div>
+<div class="ttc" id="aclass_player_html"><div class="ttname"><a href="class_player.html">Player</a></div><div class="ttdoc">Module gérant le joueur et ses déplacements.</div><div class="ttdef"><b>Definition:</b> Player.h:16</div></div>
+<div class="ttc" id="aclass_player_html_a06487efec49f46828c3167bbe122bde7"><div class="ttname"><a href="class_player.html#a06487efec49f46828c3167bbe122bde7">Player::getPosY</a></div><div class="ttdeci">int getPosY() const</div><div class="ttdoc">Accesseur qui retourne la position du joueur sur l'axe des ordonnées.</div><div class="ttdef"><b>Definition:</b> Player.cpp:102</div></div>
+<div class="ttc" id="aclass_player_html_a1855ae5f29f7f22a4699733692e48fce"><div class="ttname"><a href="class_player.html#a1855ae5f29f7f22a4699733692e48fce">Player::getPosX</a></div><div class="ttdeci">int getPosX() const</div><div class="ttdoc">Accesseur qui retourne la position du joueur sur l'axe des abscisses.</div><div class="ttdef"><b>Definition:</b> Player.cpp:100</div></div>
+<div class="ttc" id="aclass_player_html_a4f606768c09e14b74d7947081211242d"><div class="ttname"><a href="class_player.html#a4f606768c09e14b74d7947081211242d">Player::updatePlayerSdl</a></div><div class="ttdeci">void updatePlayerSdl(const Map &amp;m, bool rightPressed, bool leftPressed, bool jumpPressed)</div><div class="ttdoc">Constructeur de la classe Player, initialise le joueur aux coordonées (classe Coord) passées en param...</div><div class="ttdef"><b>Definition:</b> Player.cpp:32</div></div>
+<div class="ttc" id="aclass_player_html_a6ac120b913d3695cc33ff07652209ab6"><div class="ttname"><a href="class_player.html#a6ac120b913d3695cc33ff07652209ab6">Player::checkIfFalling</a></div><div class="ttdeci">void checkIfFalling(const Map &amp;m)</div><div class="ttdoc">Vérifie si le joueur est dans le vide pour lui appliquer la gravité</div><div class="ttdef"><b>Definition:</b> Player.cpp:92</div></div>
+<div class="ttc" id="aclass_player_html_a9b916dba7251c233eb0be631e0115b9c"><div class="ttname"><a href="class_player.html#a9b916dba7251c233eb0be631e0115b9c">Player::jump</a></div><div class="ttdeci">void jump(const Map &amp;m)</div><div class="ttdoc">Fait sauter le joueur (mode texte uniquement)</div><div class="ttdef"><b>Definition:</b> Player.cpp:67</div></div>
+<div class="ttc" id="aclass_player_html_abfd325af85472ee1777ed775f13fbc00"><div class="ttname"><a href="class_player.html#abfd325af85472ee1777ed775f13fbc00">Player::left</a></div><div class="ttdeci">void left(const Map &amp;m)</div><div class="ttdoc">Déplace le joueur à gauche (mode texte uniquement)</div><div class="ttdef"><b>Definition:</b> Player.cpp:59</div></div>
+<div class="ttc" id="aclass_player_html_ac602415a749a08d43d8eeca6c12d844a"><div class="ttname"><a href="class_player.html#ac602415a749a08d43d8eeca6c12d844a">Player::right</a></div><div class="ttdeci">void right(const Map &amp;m)</div><div class="ttdoc">Déplace le joueur à droite (mode texte uniquement)</div><div class="ttdef"><b>Definition:</b> Player.cpp:63</div></div>
+<div class="ttc" id="aclass_player_html_affe0cc3cb714f6deb4e62f0c0d3f1fd8"><div class="ttname"><a href="class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8">Player::Player</a></div><div class="ttdeci">Player()</div><div class="ttdoc">Constructeur par défaut de la classe Player, initialise le joueur en bas a gauche de la map.</div><div class="ttdef"><b>Definition:</b> Player.cpp:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
