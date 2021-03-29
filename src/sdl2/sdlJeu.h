@@ -6,6 +6,7 @@
 
 #include "../core/Jeu.h"
 
+//! \brief Pour g�rer une image avec SDL2
 class Image {
 
 private:
@@ -46,6 +47,10 @@ private :
     Image imPlayer;
     Image imPlatform;
     Image imBackground;
+    Image imRunRight;
+    Image imRunLeft;
+    Image imJump;
+    Image imJump2;
 
     bool souris;
     bool touche;
@@ -54,7 +59,7 @@ public :
     sdlJeu ();
     ~sdlJeu ();
     void sdlBoucle ();
-    void sdlAff ();
+    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed);
     void resizeWindow(int windowWidth, int windowHeight);
 
 };

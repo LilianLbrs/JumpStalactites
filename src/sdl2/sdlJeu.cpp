@@ -124,7 +124,9 @@ sdlJeu::sdlJeu () : jeu() {
     imPlayer.loadFromFile("data/player.png",renderer);
     imPlatform.loadFromFile("data/platform.png",renderer);
     imBackground.loadFromFile("data/background.jpg",renderer);
-
+    imRunRight.loadFromFile("data/runright.png",renderer);
+    imRunLeft.loadFromFile("data/runleft.png",renderer);
+    imJump.loadFromFile("data/jump.png",renderer);
 }
 
 sdlJeu::~sdlJeu () {
@@ -133,7 +135,7 @@ sdlJeu::~sdlJeu () {
     SDL_Quit();
 }
 
-void sdlJeu::sdlAff () {
+void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed) {
 	//Remplir l'�cran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
@@ -152,8 +154,25 @@ void sdlJeu::sdlAff () {
 				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
 
 	// Afficher le sprite du joueur
-	imPlayer.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE*2);
-
+    if(jumpPressed)
+    {
+        imJump.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+    }
+    else{
+    if(rightPressed)
+    {
+	    imRunRight.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+    }
+    else
+    {if(leftPressed)
+    {
+        imRunLeft.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+    }
+    else{
+        imPlayer.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE*2);
+    }
+    }
+    }
 }
 
 void sdlJeu::resizeWindow(int windowWidth, int windowHeight) {
@@ -166,6 +185,7 @@ void sdlJeu::sdlBoucle () {
 	bool quit = false;
     bool leftPressed = false, rightPressed = false,
     jumpPressed = false;
+    Player player;
 
 	// tant que ce n'est pas la fin ...
 	while (!quit) {
@@ -182,7 +202,7 @@ void sdlJeu::sdlBoucle () {
                 case SDL_WINDOWEVENT:
                 if (events.window.event == SDL_WINDOWEVENT_RESIZED) {
                 resizeWindow(events.window.data1, events.window.data2);
-                 }
+                }
                 break;
                 case SDL_KEYDOWN:
                 switch (events.key.keysym.scancode)
@@ -207,7 +227,6 @@ void sdlJeu::sdlBoucle () {
                 {
                     case SDL_SCANCODE_SPACE:
                     jumpPressed = false;
-                    jeu.getPlayer().canJump = true;
                     break;
                     case SDL_SCANCODE_A:
                     case SDL_SCANCODE_LEFT:
@@ -226,14 +245,14 @@ void sdlJeu::sdlBoucle () {
             }
         }
 
-        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed);
 
+        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed);
         // on affiche le jeu sur le buffer cach�
-	    sdlAff();
+	    sdlAff(rightPressed,jumpPressed,leftPressed);
 
 		// on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
-        SDL_Delay(1000/55);
+        SDL_Delay(30);
 	}
 
 }
