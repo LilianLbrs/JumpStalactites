@@ -25,6 +25,7 @@ class Player {
         Player ();
         Player (int posX, int posY);
         Player (Coord& pos);
+        void updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed);
 
         void checkIfFalling (const Map& m);
         void left (const Map& m);

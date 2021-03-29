@@ -39,6 +39,7 @@ Map& Jeu::getMap () { return map; }
 const Map& Jeu::getConstMap () const { return map; }
 
 const Player& Jeu::getConstPlayer () const { return player; }
+Player& Jeu::getPlayer () { return player; }
 
 const Stalactites& Jeu::getStalactite(int i) const { return stalactite[i]; }
 
