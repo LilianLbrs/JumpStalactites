@@ -20,6 +20,7 @@ class Player {
         bool isFalling;
 
     public :
+        bool canJump;
         int jumpcount;
 
         /**

@@ -5,7 +5,7 @@
 #define SPEED 1
 #define GRAVITY 1
 #define FPS 60
-#define JUMP -4
+#define JUMP -6
 
 Player::Player() {
     coord.setPos(1, 18); // /!\ les Y sont inversés
@@ -13,6 +13,7 @@ Player::Player() {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
+    canJump = true;
 }
 
 Player::Player (int posX, int posY) {
@@ -39,8 +40,9 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     velY = (isFalling) * GRAVITY;
 
 
-    if (!isFalling && jumpPressed && jumpcount == 0) {
+    if (!isFalling && jumpPressed && jumpcount == 0 && canJump) {
             int i = -2;
+            canJump = false;
             while (m.isPosValid(coord.getPosx(), coord.getPosy() + i) && i > JUMP - 1)
             {
                 i--;
@@ -81,21 +83,17 @@ void Player::jump (const Map& m) {
         if (m.isPosValid(coord) &&
             m.isPosValid(coord.getPosx(),coord.getPosy()-1) &&
             m.isPosValid(coord.getPosx(),coord.getPosy()-2) &&
-            m.isPosValid(coord.getPosx(),coord.getPosy()-3) &&
-            m.isPosValid(coord.getPosx(),coord.getPosy()-4))
-                    velY += -4;
+            m.isPosValid(coord.getPosx(),coord.getPosy()-3))
+                    coord.setPosy(coord.getPosy() -4);
         else if (m.isPosValid(coord) &&
             m.isPosValid(coord.getPosx(),coord.getPosy()-1) &&
-            m.isPosValid(coord.getPosx(),coord.getPosy()-2) &&
-            m.isPosValid(coord.getPosx(),coord.getPosy()-3))
-                    velY += -3;
+            m.isPosValid(coord.getPosx(),coord.getPosy()-2))
+                    coord.setPosy(coord.getPosy() -3);
         else if (m.isPosValid(coord) &&
-                 m.isPosValid(coord.getPosx(),coord.getPosy()-1) &&
-                 m.isPosValid(coord.getPosx(),coord.getPosy()-2))
-                    velY += -2;
-        else if (m.isPosValid(coord) &&
-        m.isPosValid(coord.getPosx(),coord.getPosy()-1))
-                    velY += -1;
+                 m.isPosValid(coord.getPosx(),coord.getPosy()-1))
+                    coord.setPosy(coord.getPosy() -2);
+        else if (m.isPosValid(coord))
+                    coord.setPosy(coord.getPosy() -1);
     }
 }
 

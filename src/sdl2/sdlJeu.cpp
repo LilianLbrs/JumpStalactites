@@ -227,6 +227,7 @@ void sdlJeu::sdlBoucle () {
                 {
                     case SDL_SCANCODE_SPACE:
                     jumpPressed = false;
+                    jeu.getPlayer().canJump = true;
                     break;
                     case SDL_SCANCODE_A:
                     case SDL_SCANCODE_LEFT:
