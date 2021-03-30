@@ -3,6 +3,7 @@
 #include "sdlJeu.h"
 #include <stdlib.h>
 
+
 #include <iostream>
 using namespace std;
 
@@ -126,7 +127,15 @@ sdlJeu::sdlJeu () : jeu() {
     imBackground.loadFromFile("data/background.jpg",renderer);
     imRunRight.loadFromFile("data/runright.png",renderer);
     imRunLeft.loadFromFile("data/runleft.png",renderer);
+    imTitre.loadFromFile("data/letitre.png",renderer);
+    imMenuFond.loadFromFile("data/fondglace.png",renderer);
+    imBoutonJoue.loadFromFile("data/play.png",renderer);
+    imBoutonQuitter.loadFromFile("data/exit.png",renderer);
     imJump.loadFromFile("data/jump.png",renderer);
+    imVie3.loadFromFile("data/vie3.png",renderer);
+    imVie2.loadFromFile("data/vie2.png",renderer);
+    imVie1.loadFromFile("data/vie1.png",renderer);
+    imVie0.loadFromFile("data/vie0.png",renderer);
 }
 
 sdlJeu::~sdlJeu () {
@@ -135,7 +144,7 @@ sdlJeu::~sdlJeu () {
     SDL_Quit();
 }
 
-void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed) {
+void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed) {
 	//Remplir l'�cran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
@@ -173,6 +182,34 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed) {
     }
     }
     }
+
+    //afficher les points de vie
+    if(player.vie==0)
+    {
+        imVie0.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
+    }
+    else
+    {if(player.vie==1){
+        imVie1.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
+    
+    }else{
+    if(player.vie==2){
+        imVie2.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
+    }
+    else{
+    if(player.vie==3){
+        imVie3.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
+    }
+    }
+    }
+    }
+    if(escapePressed)
+    {
+        imMenuFond.draw(renderer, 0, 0, dimWindowX, dimWindowY);
+        imBoutonJoue.draw(renderer, dimWindowX/2-TAILLE_SPRITE*4,dimWindowY/6+TAILLE_SPRITE/2,TAILLE_SPRITE*8,TAILLE_SPRITE*4);
+        imBoutonQuitter.draw(renderer,dimWindowX/2-TAILLE_SPRITE*2,dimWindowY/2-TAILLE_SPRITE/2,TAILLE_SPRITE*4,TAILLE_SPRITE*4);
+        imTitre.draw(renderer,dimWindowX/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
+    }
 }
 
 void sdlJeu::resizeWindow(int windowWidth, int windowHeight) {
@@ -184,16 +221,57 @@ void sdlJeu::sdlBoucle () {
     SDL_Event events;
 	bool quit = false;
     bool leftPressed = false, rightPressed = false,
-    jumpPressed = false;
+    jumpPressed = false, escapePressed = true,returnPressed = false,
+    supprPressed=false; 
     Player player;
+    bool enPause=true;
+    SDL_Rect positionClic;
+
 
 	// tant que ce n'est pas la fin ...
 	while (!quit) {
 
-
-		// tant qu'il y a des evenements � traiter (cette boucle n'est pas bloquante)
-		while (SDL_PollEvent(&events))
+        //boucle menu
+        while (SDL_PollEvent(&events))
         {
+        if(enPause)
+        { 
+            switch (events.type)
+            {
+                case SDL_QUIT:
+                quit = true;
+                break;
+                escapePressed=true;
+                case SDL_WINDOWEVENT:
+                if (events.window.event == SDL_WINDOWEVENT_RESIZED) {
+                resizeWindow(events.window.data1, events.window.data2);
+                }
+                break;
+                case SDL_MOUSEBUTTONUP:
+                    if(events.button.button == SDL_BUTTON_LEFT)
+                    {
+                        positionClic.x = events.button.x;
+                        positionClic.y = events.button.y;
+
+                        if(events.button.x > dimWindowX/2-TAILLE_SPRITE*4 && events.button.x< dimWindowX/2+TAILLE_SPRITE*4 && events.button.y > dimWindowY/6 && events.button.y<dimWindowY/6+TAILLE_SPRITE*4)
+                        {
+                           enPause = false;
+                           escapePressed=false;
+
+                        }
+                        else if(events.button.x >dimWindowX/2-TAILLE_SPRITE*2 && events.button.x<dimWindowX/2+TAILLE_SPRITE*2 && events.button.y > dimWindowY/2 && events.button.y<dimWindowY/2+TAILLE_SPRITE*4)
+                        {
+                            exit(0);
+                        }
+
+                    }
+                    break;
+    
+            }
+            }
+        
+		// tant qu'il y a des evenements � traiter (cette boucle n'est pas bloquante)
+		
             switch (events.type)
             {
                 case SDL_QUIT:
@@ -217,6 +295,10 @@ void sdlJeu::sdlBoucle () {
                     case SDL_SCANCODE_D:
                     case SDL_SCANCODE_RIGHT:
                     rightPressed = true;
+                    break;
+                    case SDL_SCANCODE_ESCAPE:
+                    escapePressed = true;
+                    enPause = true;
                     break;
                     default:
                     break;
@@ -244,12 +326,13 @@ void sdlJeu::sdlBoucle () {
                 default:
                 break;
             }
-        }
+        
+    }
 
 
         jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed);
         // on affiche le jeu sur le buffer cach�
-	    sdlAff(rightPressed,jumpPressed,leftPressed);
+	    sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,returnPressed);
 
 		// on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
@@ -257,3 +340,4 @@ void sdlJeu::sdlBoucle () {
 	}
 
 }
+

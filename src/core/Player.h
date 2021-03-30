@@ -18,10 +18,13 @@ class Player {
         Coord coord;
         int velX, velY;
         bool isFalling;
-
+        
     public :
         bool canJump;
         int jumpcount;
+        int vie;
+        bool canMove;
+
 
         /**
          * \brief Constructeur par défaut de la classe Player, initialise le joueur en bas a gauche de la map

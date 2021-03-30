@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+
 #include "../core/Jeu.h"
 
 //! \brief Pour g�rer une image avec SDL2
@@ -49,8 +50,16 @@ private :
     Image imBackground;
     Image imRunRight;
     Image imRunLeft;
+    Image imMenuFond;
+    Image imBoutonJoue;
+    Image imBoutonQuitter;
+    Image imTitre;
     Image imJump;
     Image imJump2;
+    Image imVie3;
+    Image imVie2;
+    Image imVie1;
+    Image imVie0;
 
     bool souris;
     bool touche;
@@ -59,7 +68,7 @@ public :
     sdlJeu ();
     ~sdlJeu ();
     void sdlBoucle ();
-    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed);
+    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed);
     void resizeWindow(int windowWidth, int windowHeight);
 
 };

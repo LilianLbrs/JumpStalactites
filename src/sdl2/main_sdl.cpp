@@ -1,4 +1,5 @@
 #include "sdlJeu.h"
+#include "sdlMenu.h"
 
 int main (int argc, char** argv) {
 	sdlJeu sj;

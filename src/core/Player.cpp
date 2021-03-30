@@ -14,6 +14,8 @@ Player::Player() {
     isFalling = false;
     jumpcount = 0;
     canJump = true;
+    vie = 3;
+    canMove = true;
 }
 
 Player::Player (int posX, int posY) {
@@ -22,6 +24,7 @@ Player::Player (int posX, int posY) {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
+    vie = 3;
 }
 
 Player::Player (Coord& pos) {
@@ -30,6 +33,7 @@ Player::Player (Coord& pos) {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
+    vie = 3;
 }
 
 void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed) {
