@@ -27,7 +27,7 @@ class Stalactites {
     Stalactites (int posX);
     void operator=(const Stalactites& s);
 
-    bool updateStalactite(const Map& m, const Player& p);
+    void updateStalactite(const Map& m, const Player& p, int taille = 1);
 };
 
 #endif

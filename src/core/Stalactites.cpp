@@ -1,4 +1,5 @@
 #include "Stalactites.h"
+#include <stdlib.h>
 
 Stalactites::Stalactites () {
     coord.setPosx(1);
@@ -16,17 +17,15 @@ void Stalactites::operator=(const Stalactites& s) {
     this->hidden = s.hidden;
 }
 
-bool Stalactites::updateStalactite(const Map& m, const Player& p) {
-    bool endGame = false;
-    if (coord.getPosx() == p.getPosX() && coord.getPosy() == p.getPosY()) endGame = true;
-    else if (m.isPosValid(coord.getPosx(), coord.getPosy() +1)) {
-        coord.setPosy(coord.getPosy() +1);
+void Stalactites::updateStalactite(const Map& m, const Player& p, int taille) {
+    if (m.isPosValid(coord.getPosx(), coord.getPosy()+4+taille, taille)) {
+        coord.setPosy(coord.getPosy() + 4);
         hidden = false;
         }
     else{
-        coord.setPosy(coord.getPosy()+1);
+        coord.setPosy(0);
+        coord.setPosx((rand()%m.getDimX())*taille);
         hidden = true;
     }
-    return endGame;
 
 }

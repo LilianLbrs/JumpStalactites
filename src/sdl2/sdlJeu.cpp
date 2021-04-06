@@ -136,6 +136,7 @@ sdlJeu::sdlJeu () : jeu() {
     imVie2.loadFromFile("data/vie2.png",renderer);
     imVie1.loadFromFile("data/vie1.png",renderer);
     imVie0.loadFromFile("data/vie0.png",renderer);
+    imStalactite.loadFromFile("data/IceSpike.png",renderer);
 }
 
 sdlJeu::~sdlJeu () {
@@ -162,23 +163,30 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 			if (map.getXY(x,y)=='#')
 				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
 
+    //Afficher les sprites des stalactites
+    for (int i = 0; i < 5; i++ ){
+            if(!jeu.getStalactite(i).hidden){
+                imStalactite.draw(renderer,jeu.getStalactite(i).coord.getPosx(), jeu.getStalactite(i).coord.getPosy(), TAILLE_SPRITE,TAILLE_SPRITE);
+            }
+    }
+
 	// Afficher le sprite du joueur
     if(jumpPressed)
     {
-        imJump.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        imJump.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else{
     if(rightPressed)
     {
-	    imRunRight.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+	    imRunRight.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else
     {if(leftPressed)
     {
-        imRunLeft.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        imRunLeft.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else{
-        imPlayer.draw(renderer,player.getPosX()*TAILLE_SPRITE,player.getPosY()*TAILLE_SPRITE-TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE*2);
+        imPlayer.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE,TAILLE_SPRITE*2);
     }
     }
     }
@@ -191,7 +199,7 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     else
     {if(player.vie==1){
         imVie1.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
-    
+
     }else{
     if(player.vie==2){
         imVie2.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
@@ -222,7 +230,7 @@ void sdlJeu::sdlBoucle () {
 	bool quit = false;
     bool leftPressed = false, rightPressed = false,
     jumpPressed = false, escapePressed = true,returnPressed = false,
-    supprPressed=false; 
+    supprPressed=false;
     Player player;
     bool enPause=true;
     SDL_Rect positionClic;
@@ -235,7 +243,7 @@ void sdlJeu::sdlBoucle () {
         while (SDL_PollEvent(&events))
         {
         if(enPause)
-        { 
+        {
             switch (events.type)
             {
                 case SDL_QUIT:
@@ -266,12 +274,12 @@ void sdlJeu::sdlBoucle () {
 
                     }
                     break;
-    
+
             }
             }
-        
+
 		// tant qu'il y a des evenements � traiter (cette boucle n'est pas bloquante)
-		
+
             switch (events.type)
             {
                 case SDL_QUIT:
@@ -326,11 +334,14 @@ void sdlJeu::sdlBoucle () {
                 default:
                 break;
             }
-        
+
     }
 
 
-        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed);
+        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed, TAILLE_SPRITE);
+        for(int i=0; i<5; i++){
+            jeu.setStalactite(i).updateStalactite(jeu.getConstMap(), jeu.getConstPlayer(), TAILLE_SPRITE);
+        }
         // on affiche le jeu sur le buffer cach�
 	    sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,returnPressed);
 

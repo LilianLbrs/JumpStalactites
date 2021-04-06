@@ -1,7 +1,6 @@
 #include "Jeu.h"
 
 Jeu::Jeu () : map() {
-
 }
 
 void Jeu::actionClavier (const char touche) {
@@ -25,7 +24,9 @@ bool Jeu::actionsAuto (int h, int posX, int i) {
 		stalactite[i].coord.setPosx(posX);
 		stalactite[i].coord.setPosy(h);
 	}
-	else endGame = stalactite[i].updateStalactite(map, player);
+    else endGame = (stalactite[i].coord.getPosx() == player.getPosX() && stalactite[i].coord.getPosy() == player.getPosY());
+    setStalactite(i).updateStalactite(map, player);
+
 
 	return endGame;
 }
@@ -33,7 +34,7 @@ bool Jeu::actionsAuto (int h, int posX, int i) {
 Map& Jeu::getMap () { return map; }
 
 void Jeu::gravity () {
-    player.checkIfFalling(map);
+    player.checkIfFalling(map, 1);
 }
 
 const Map& Jeu::getConstMap () const { return map; }
@@ -42,5 +43,6 @@ const Player& Jeu::getConstPlayer () const { return player; }
 Player& Jeu::getPlayer () { return player; }
 
 const Stalactites& Jeu::getStalactite(int i) const { return stalactite[i]; }
+Stalactites& Jeu::setStalactite(int i) {return stalactite[i];}
 
 int Jeu::getDimMapX () { return map.getDimX();}

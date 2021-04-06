@@ -18,9 +18,8 @@ class Player {
         Coord coord;
         int velX, velY;
         bool isFalling;
-        
+
     public :
-        bool canJump;
         int jumpcount;
         int vie;
         bool canMove;
@@ -49,18 +48,20 @@ class Player {
          * \param rightPressed : vrai si d est pressé, faux sinon
          * \param leftPressed : vrai si q est pressé, faux sinon
          * \param jumpPressed : vrai si espace est pressé, faux sinon
+         * \param taille : taille de la "case"
          */
-        void updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed);
+        void updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int taille = 1);
         /**
          * \brief Vérifie si le joueur est dans le vide pour lui appliquer la gravité
          *
          * \param m : Map utilisée
          */
-        void checkIfFalling (const Map& m);
+        void checkIfFalling (const Map& m, int taille = 1);
         /**
          * \brief Déplace le joueur à gauche (mode texte uniquement)
          *
          * \param m : Map utilisée
+         * \param taille : taille de la "case"
          */
         void left (const Map& m);
         /**

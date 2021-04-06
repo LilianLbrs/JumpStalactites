@@ -43,11 +43,17 @@ public :
      */
     Player& getPlayer ();
     /**
-     * \brief Accesseur qui retourne la stalactite d'indice i
+     * \brief Accesseur qui retourne la stalactite (const) d'indice i
      *
      * \param i : indice de la stalactite à retourner
      */
     const Stalactites& getStalactite (int i) const;
+    /**
+     * \brief Accesseur qui  retourne la stalactite d'incdice i
+     *
+     *\param i : indice de la stalactite à retourner
+     */
+     Stalactites& setStalactite(int i);
     /**
      * \brief Procédure qui gère les actions automatiques du jeu (stalactites)
      *

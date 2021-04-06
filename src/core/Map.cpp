@@ -2,6 +2,7 @@
 #include <cassert>
 #include <fstream>
 #include <string.h>
+#include <math.h>
 using namespace std;
 
 
@@ -25,12 +26,12 @@ void Map::loadMapFromFile() {
 
 }
 
-bool Map::isPosValid (int x, int y) const {
-	return ((x>=0) && (x<dimx) && (y>=0) && (y<dimy) && (mapTable[x][y]!='#'));
+bool Map::isPosValid (int x, int y, int taille) const {
+	return ((x/taille>=0) && (x/taille<dimx) && (y/taille>=0) && (y/taille<dimy) && (mapTable[(int)x/taille][(int)y/taille]!='#'));
 }
 
-bool Map::isPosValid (Coord& pos) const {
-	return ((pos.getPosx()>=0) && (pos.getPosx()<dimx) && (pos.getPosy()>=0) && (pos.getPosy()<dimy) && (mapTable[pos.getPosx()][pos.getPosy()]!='#'));
+bool Map::isPosValid (Coord& pos, int taille) const {
+	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#'));
 }
 
 char Map::getXY (const int x, const int y) const {

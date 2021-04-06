@@ -60,6 +60,7 @@ private :
     Image imVie2;
     Image imVie1;
     Image imVie0;
+    Image imStalactite;
 
     bool souris;
     bool touche;
