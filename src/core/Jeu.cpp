@@ -1,6 +1,6 @@
 #include "Jeu.h"
 
-Jeu::Jeu () : map() {
+Jeu::Jeu () : map(), player(0, map.getDimY()*32 - 3*32) {
 }
 
 void Jeu::actionClavier (const char touche) {

@@ -22,6 +22,7 @@ public:
     void loadFromFile (const char* filename, SDL_Renderer * renderer);
     void loadFromCurrentSurface (SDL_Renderer * renderer);
     void draw (SDL_Renderer * renderer, int x, int y, int w=-1, int h=-1);
+    void drawBG (SDL_Renderer * renderer, int x, int y, int w=-1, int h=-1);
     SDL_Texture * getTexture() const;
     void setSurface(SDL_Surface * surf);
 };
@@ -70,7 +71,6 @@ public :
     ~sdlJeu ();
     void sdlBoucle ();
     void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed);
-    void resizeWindow(int windowWidth, int windowHeight);
 
 };
 

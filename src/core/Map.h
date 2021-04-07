@@ -2,6 +2,7 @@
 #define _MAP_H
 
 #include "Coord.h"
+#include <vector>
 
 /**
  * \file Map.h
@@ -13,9 +14,9 @@
 class Map {
     private:
 
-        int dimx;
-        int dimy;
-        char mapTable [100][100];
+        const int dimx = 30;
+        const int dimy = 38;
+        char mapTable [30][38];
 
     public:
 

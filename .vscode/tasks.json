@@ -6,8 +6,7 @@
 			"label": "Run mingw32-make -f Makefile_txt",
 			"command": "C:/MinGW/bin/mingw32-make",
 			"args": [
-				"-f",
-				"Makefile_txt",
+				
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"

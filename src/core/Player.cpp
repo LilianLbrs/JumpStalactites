@@ -1,7 +1,5 @@
 #include "Player.h"
 #include "Map.h"
-#define WIDTH 960
-#define HEIGHT 640
 #define SPEED 16
 #define GRAVITY 8
 #define FPS 60
@@ -9,7 +7,7 @@
 #define JUMP -12
 
 Player::Player() {
-    coord.setPos(16, 0); // /!\ les Y sont inversés
+    coord.setPos(0, 0); // /!\ les Y sont inversés
     velX = 0;
     velY = 0;
     isFalling = false;

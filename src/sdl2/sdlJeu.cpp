@@ -7,8 +7,6 @@
 #include <iostream>
 using namespace std;
 
-const int TAILLE_SPRITE = 32;
-
 float temps () {
     return float(SDL_GetTicks())*10000 / CLOCKS_PER_SEC;  // conversion des ms en secondes en divisant par 1000
 }
@@ -25,7 +23,7 @@ void Image::loadFromFile (const char* filename, SDL_Renderer * renderer) {
     surface = IMG_Load(filename);
     if (surface == NULL) {
         string nfn = string("../") + filename;
-        cout << "Error: cannot load "<< filename <<". Trying "<<nfn<<endl;
+        //cout << "Error: cannot load "<< filename <<". Trying "<<nfn<<endl;
         surface = IMG_Load(nfn.c_str());
         if (surface == NULL) {
             nfn = string("../") + nfn;
@@ -77,6 +75,24 @@ void Image::draw (SDL_Renderer * renderer, int x, int y, int w, int h) {
     assert(ok == 0);
 }
 
+void Image::drawBG (SDL_Renderer * renderer, int x, int y, int w, int h) {
+    int ok;
+    SDL_Rect r;
+    r.x = x;
+    r.y = y;
+    r.w = (w<0)?surface->w:w;
+    r.h = (h<0)?surface->h:h;
+
+    if (has_changed) {
+        ok = SDL_UpdateTexture(texture,NULL,surface->pixels,surface->pitch);
+        assert(ok == 0);
+        has_changed = false;
+    }
+
+    ok = SDL_RenderCopy(renderer,texture,NULL,&r);
+    assert(ok == 0);
+}
+
 SDL_Texture * Image::getTexture() const {return texture;}
 
 void Image::setSurface(SDL_Surface * surf) {surface = surf;}
@@ -84,8 +100,20 @@ void Image::setSurface(SDL_Surface * surf) {surface = surf;}
 
 
 
+// =========== AFFICHAGE DU JEU ============ //
 
 
+//Les attributs de l'écran (640 * 480)
+const int SCREEN_WIDTH = 960;
+const int SCREEN_HEIGHT = 640;
+const int TAILLE_SPRITE = 32;
+
+//Les dimensions de la map
+const int MAP_WIDTH = 1280;
+int MAP_HEIGHT;
+
+//La camera
+SDL_Rect camera = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 
 
@@ -93,6 +121,8 @@ void Image::setSurface(SDL_Surface * surf) {surface = surf;}
 // ============= CLASS SDLJEU =============== //
 
 sdlJeu::sdlJeu () : jeu() {
+    MAP_HEIGHT = jeu.getConstMap().getDimY() * TAILLE_SPRITE;
+
     // Initialisation de la SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         cout << "Erreur lors de l'initialisation de la SDL : " << SDL_GetError() << endl;
@@ -108,11 +138,8 @@ sdlJeu::sdlJeu () : jeu() {
     }
 
 
-	dimWindowX = jeu.getConstMap().getDimX() * TAILLE_SPRITE;
-	dimWindowY = jeu.getConstMap().getDimY() * TAILLE_SPRITE;
-
     // Creation de la fenetre
-    window = SDL_CreateWindow("JumpStalactites", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, dimWindowX, dimWindowY, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+    window = SDL_CreateWindow("JumpStalactites", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window == NULL) {
         cout << "Erreur lors de la creation de la fenetre : " << SDL_GetError() << endl;
         SDL_Quit();
@@ -155,38 +182,38 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 	const Player& player = jeu.getConstPlayer();
 
     //Afficher le background
-    imBackground.draw(renderer, 0, 0, dimWindowX, dimWindowY);
+    imBackground.drawBG(renderer, 0, 0, SCREEN_WIDTH, SCREEN_WIDTH);
 
     // Afficher les sprites des plateformes
 	for (x=0;x<map.getDimX();++x)
 		for (y=0;y<map.getDimY();++y)
 			if (map.getXY(x,y)=='#')
-				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE,TAILLE_SPRITE,TAILLE_SPRITE);
+				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
 
     //Afficher les sprites des stalactites
     for (int i = 0; i < 5; i++ ){
             if(!jeu.getStalactite(i).hidden){
-                imStalactite.draw(renderer,jeu.getStalactite(i).coord.getPosx(), jeu.getStalactite(i).coord.getPosy(), TAILLE_SPRITE,TAILLE_SPRITE);
+                imStalactite.draw(renderer,jeu.getStalactite(i).coord.getPosx(), jeu.getStalactite(i).coord.getPosy() - camera.y, TAILLE_SPRITE,TAILLE_SPRITE);
             }
     }
 
 	// Afficher le sprite du joueur
     if(jumpPressed)
     {
-        imJump.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        imJump.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else{
     if(rightPressed)
     {
-	    imRunRight.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+	    imRunRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else
     {if(leftPressed)
     {
-        imRunLeft.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        imRunLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     }
     else{
-        imPlayer.draw(renderer,player.getPosX(),player.getPosY() - 1,TAILLE_SPRITE,TAILLE_SPRITE*2);
+        imPlayer.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE,TAILLE_SPRITE*2);
     }
     }
     }
@@ -213,16 +240,11 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     }
     if(escapePressed)
     {
-        imMenuFond.draw(renderer, 0, 0, dimWindowX, dimWindowY);
-        imBoutonJoue.draw(renderer, dimWindowX/2-TAILLE_SPRITE*4,dimWindowY/6+TAILLE_SPRITE/2,TAILLE_SPRITE*8,TAILLE_SPRITE*4);
-        imBoutonQuitter.draw(renderer,dimWindowX/2-TAILLE_SPRITE*2,dimWindowY/2-TAILLE_SPRITE/2,TAILLE_SPRITE*4,TAILLE_SPRITE*4);
-        imTitre.draw(renderer,dimWindowX/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
+        imMenuFond.draw(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        imBoutonJoue.draw(renderer, SCREEN_WIDTH/2-TAILLE_SPRITE*4,SCREEN_HEIGHT/6+TAILLE_SPRITE/2,TAILLE_SPRITE*8,TAILLE_SPRITE*4);
+        imBoutonQuitter.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*2,SCREEN_HEIGHT/2-TAILLE_SPRITE/2,TAILLE_SPRITE*4,TAILLE_SPRITE*4);
+        imTitre.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
     }
-}
-
-void sdlJeu::resizeWindow(int windowWidth, int windowHeight) {
-    dimWindowX = windowWidth;
-    dimWindowY = windowHeight;
 }
 
 void sdlJeu::sdlBoucle () {
@@ -250,24 +272,20 @@ void sdlJeu::sdlBoucle () {
                 quit = true;
                 break;
                 escapePressed=true;
-                case SDL_WINDOWEVENT:
-                if (events.window.event == SDL_WINDOWEVENT_RESIZED) {
-                resizeWindow(events.window.data1, events.window.data2);
-                }
-                break;
+
                 case SDL_MOUSEBUTTONUP:
                     if(events.button.button == SDL_BUTTON_LEFT)
                     {
                         positionClic.x = events.button.x;
                         positionClic.y = events.button.y;
 
-                        if(events.button.x > dimWindowX/2-TAILLE_SPRITE*4 && events.button.x< dimWindowX/2+TAILLE_SPRITE*4 && events.button.y > dimWindowY/6 && events.button.y<dimWindowY/6+TAILLE_SPRITE*4)
+                        if(events.button.x > SCREEN_WIDTH/2-TAILLE_SPRITE*4 && events.button.x< SCREEN_WIDTH/2+TAILLE_SPRITE*4 && events.button.y > SCREEN_HEIGHT/6 && events.button.y<SCREEN_HEIGHT/6+TAILLE_SPRITE*4)
                         {
                            enPause = false;
                            escapePressed=false;
 
                         }
-                        else if(events.button.x >dimWindowX/2-TAILLE_SPRITE*2 && events.button.x<dimWindowX/2+TAILLE_SPRITE*2 && events.button.y > dimWindowY/2 && events.button.y<dimWindowY/2+TAILLE_SPRITE*4)
+                        else if(events.button.x >SCREEN_WIDTH/2-TAILLE_SPRITE*2 && events.button.x<SCREEN_WIDTH/2+TAILLE_SPRITE*2 && events.button.y > SCREEN_HEIGHT/2 && events.button.y<SCREEN_HEIGHT/2+TAILLE_SPRITE*4)
                         {
                             exit(0);
                         }
@@ -285,11 +303,7 @@ void sdlJeu::sdlBoucle () {
                 case SDL_QUIT:
                 quit = true;
                 break;
-                case SDL_WINDOWEVENT:
-                if (events.window.event == SDL_WINDOWEVENT_RESIZED) {
-                resizeWindow(events.window.data1, events.window.data2);
-                }
-                break;
+
                 case SDL_KEYDOWN:
                 switch (events.key.keysym.scancode)
                 {
@@ -317,7 +331,7 @@ void sdlJeu::sdlBoucle () {
                 {
                     case SDL_SCANCODE_SPACE:
                     jumpPressed = false;
-                    jeu.getPlayer().canJump = true;
+                    //jeu.getPlayer().canJump = true;
                     break;
                     case SDL_SCANCODE_A:
                     case SDL_SCANCODE_LEFT:
@@ -337,17 +351,27 @@ void sdlJeu::sdlBoucle () {
 
     }
 
-
+        // on actualise la position du joueur
         jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed, TAILLE_SPRITE);
+        
+        // on actualise la position des stalactites
         for(int i=0; i<5; i++){
             jeu.setStalactite(i).updateStalactite(jeu.getConstMap(), jeu.getConstPlayer(), TAILLE_SPRITE);
         }
+
+        //on ajuste la position de la camera
+        camera.y = jeu.getPlayer().getPosY() - SCREEN_HEIGHT / 2;
+        if( camera.y <= 0 ) camera.y = 0;
+        if (camera.y >= MAP_HEIGHT - SCREEN_HEIGHT) camera.y = MAP_HEIGHT - SCREEN_HEIGHT;
+        
+
         // on affiche le jeu sur le buffer cach�
 	    sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,returnPressed);
 
 		// on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
         SDL_Delay(30);
+
 	}
 
 }

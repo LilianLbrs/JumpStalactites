@@ -7,8 +7,6 @@ using namespace std;
 
 
 Map::Map() {
-    dimx = 30;
-    dimy = 20;
     loadMapFromFile();
 }
 
