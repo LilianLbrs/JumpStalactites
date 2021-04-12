@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Map.h"
+#define WIDTH 960
+#define HEIGHT 640
 #define SPEED 16
 #define GRAVITY 8
 #define FPS 60
@@ -7,7 +9,7 @@
 #define JUMP -12
 
 Player::Player() {
-    coord.setPos(0, 0); // /!\ les Y sont inversés
+    coord.setPos(16, 0); // /!\ les Y sont inversés
     velX = 0;
     velY = 0;
     isFalling = false;
@@ -46,16 +48,25 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     if (!isFalling && jumpPressed && jumpcount >= JUMP) {
             jumpcount --;
     }
-    if (!isFalling && jumpcount < 0 && !jumpPressed){
+    if (!isFalling && !jumpPressed && jumpcount < 0){
+                    velY = DISTJUMP;
+                    jumpcount ++;
+            }
+    if (isFalling && jumpcount < 0){
                     velY = DISTJUMP;
                     jumpcount ++;
             }
 
     if(m.isPosValid(posX, posY + velY, taille) && m.isPosValid(posX, posY+ velY +taille, taille)
        && m.isPosValid(posX+ taille/2, posY + velY, taille) && m.isPosValid(posX+ taille/2, posY+ velY +taille, taille)) posY = posY + velY;
-    else jumpcount == 0;
+    else jumpcount = 0;
     if(m.isPosValid(posX + velX, posY, taille)
-        && m.isPosValid(posX + velX, posY + taille, taille) && !jumpPressed) posX = posX + velX;
+        && m.isPosValid(posX + velX, posY + taille, taille)
+        && m.isPosValid(posX + velX + taille/2, posY, taille)
+        && m.isPosValid(posX + velX + taille/2, posY + taille, taille)
+        && m.isPosValid(posX + velX, posY + (1.75)*taille, taille)
+        && m.isPosValid(posX + velX + taille/2, posY + (1.75)*taille, taille)
+        && !jumpPressed) posX = posX + velX;
 
     coord.setPosx (posX);
     coord.setPosy (posY);
@@ -65,8 +76,9 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
         coord.setPosx(0);
     if(posX >= m.getDimX()*taille)
         coord.setPosx((m.getDimX()-1) * taille);
-    if (posY <= 0)
+    if (posY <= 0){
         coord.setPosy(1);
+        jumpcount = 0;}
     if (posY > m.getDimY()*taille)
         coord.setPosy(m.getDimY()*taille);
 }
@@ -101,7 +113,7 @@ void Player::jump (const Map& m) {
 
 
 void Player::checkIfFalling (const Map& m, int taille) {
-    if (m.isPosValid(coord.getPosx(),coord.getPosy()+ taille*2, taille) && m.isPosValid(coord.getPosx() + taille/2, coord.getPosy()+ taille*2, taille) && jumpcount == 0){
+    if (m.isPosValid(coord.getPosx(),coord.getPosy()+ taille*2, taille) && m.isPosValid(coord.getPosx() + taille/2, coord.getPosy()+ taille*2, taille)){
         isFalling = true;
     }
     else isFalling = false;
