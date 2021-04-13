@@ -62,6 +62,8 @@ private :
     Image imVie1;
     Image imVie0;
     Image imStalactite;
+    Image imPlatformSpikeUp;
+    Image imPlatformSpikeDown;
 
     bool souris;
     bool touche;

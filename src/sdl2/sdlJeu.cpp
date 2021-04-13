@@ -164,6 +164,8 @@ sdlJeu::sdlJeu () : jeu() {
     imVie1.loadFromFile("data/vie1.png",renderer);
     imVie0.loadFromFile("data/vie0.png",renderer);
     imStalactite.loadFromFile("data/IceSpike.png",renderer);
+    imPlatformSpikeUp.loadFromFile("data/PlatformSpikeUp.png",renderer);
+    imPlatformSpikeDown.loadFromFile("data/PlatformSpikeDown.png",renderer);
 }
 
 sdlJeu::~sdlJeu () {
@@ -184,11 +186,17 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     //Afficher le background
     imBackground.drawBG(renderer, 0, 0, SCREEN_WIDTH, SCREEN_WIDTH);
 
-    // Afficher les sprites des plateformes
+    // Afficher les sprites des plateformes et des pics
 	for (x=0;x<map.getDimX();++x)
 		for (y=0;y<map.getDimY();++y)
+        {
 			if (map.getXY(x,y)=='#')
 				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)=='\'')
+				imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)==';')
+				imPlatformSpikeDown.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+        }
 
     //Afficher les sprites des stalactites
     for (int i = 0; i < 5; i++ ){
