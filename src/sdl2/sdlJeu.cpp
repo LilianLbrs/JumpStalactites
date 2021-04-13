@@ -106,7 +106,6 @@ void Image::setSurface(SDL_Surface * surf) {surface = surf;}
 //Les attributs de l'écran (640 * 480)
 const int SCREEN_WIDTH = 960;
 const int SCREEN_HEIGHT = 640;
-//const int TAILLE_SPRITE = 32;
 
 //Les dimensions de la map
 const int MAP_WIDTH = 1280;
@@ -204,16 +203,17 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     //Afficher le background
     imBackground.drawBG(renderer, 0, 0, SCREEN_WIDTH, SCREEN_WIDTH);
 
-	// Afficher les sprites des plateformes
-    for (x=0;x<map.getDimX();++x)
-        for (y=0;y<map.getDimY();++y) {
-            if (map.getXY(x,y)=='#')
-                imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+    // Afficher les sprites des plateformes et des pics
+	for (x=0;x<map.getDimX();++x)
+		for (y=0;y<map.getDimY();++y)
+        {
+			if (map.getXY(x,y)=='#')
+				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)=='\'')
-                imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+				imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)==';')
-                imPlatformSpikeDown.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
-                }
+				imPlatformSpikeDown.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+        }
 
     //Afficher les sprites des stalactites
     for (int i = 0; i < 5; i++ ){

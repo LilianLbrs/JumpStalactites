@@ -1,5 +1,4 @@
 #include "sdlJeu.h"
-#include "sdlMenu.h"
 #include <iostream>
 #include <time.h>
 

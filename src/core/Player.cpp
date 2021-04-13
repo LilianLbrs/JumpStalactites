@@ -1,7 +1,5 @@
 #include "Player.h"
 #include "Map.h"
-#define WIDTH 960
-#define HEIGHT 640
 #define SPEED 16
 #define GRAVITY 8
 #define FPS 60
