@@ -2,6 +2,7 @@
 #define _MAP_H
 
 #include "Coord.h"
+#include "Const.h"
 #include <vector>
 
 /**

@@ -3,8 +3,10 @@
 
 #include "Map.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Stalactites.h"
 #include "Coord.h"
+#include "Const.h"
 
 /**
  * \file Jeu.h
@@ -20,6 +22,7 @@ private :
     Map map;
     Player player;
     Stalactites stalactite [5];
+    Enemy enemy;
 
 public :
     /**
@@ -54,6 +57,10 @@ public :
      *\param i : indice de la stalactite à retourner
      */
      Stalactites& setStalactite(int i);
+     /**
+     * \brief Accesseur qui retourne l'ennemy
+     */
+     Enemy& getEnemy ();
     /**
      * \brief Procédure qui gère les actions automatiques du jeu (stalactites)
      *
@@ -66,6 +73,10 @@ public :
      * \brief Gère les actions saisies au clavier (mode texte uniquement)
      */
     void actionClavier (const char touche);
+    /**
+     * \brief Initialise le personnage et les stalactites
+     */
+    void initJeu ();
 
     void gravity ();
 

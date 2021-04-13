@@ -16,9 +16,9 @@ else
 	LIBS_SDL = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer
 endif
 
-CORE 	= core/Coord.cpp core/Map.cpp core/Stalactites.cpp core/Player.cpp core/Jeu.cpp
+CORE 	= core/Coord.cpp core/Map.cpp core/Stalactites.cpp core/Player.cpp core/Enemy.cpp core/Jeu.cpp
 SRCS_SDL = $(CORE) sdl2/sdlJeu.cpp sdl2/main_sdl.cpp
-OBJS_SDL = obj/main_sdl.o obj/sdlJeu.o obj/Jeu.o obj/Map.o obj/Player.o obj/Stalactites.o obj/Coord.o
+OBJS_SDL = obj/main_sdl.o obj/sdlJeu.o obj/Jeu.o obj/Map.o obj/Enemy.o obj/Player.o obj/Stalactites.o obj/Coord.o
 
 OBJ_DIR 		= obj
 SRC_DIR 		= src
@@ -40,6 +40,9 @@ obj/Jeu.o: src/core/Jeu.cpp src/core/Jeu.h
 
 obj/Player.o: src/core/Player.cpp src/core/Player.h
 	g++ -g -Wall -c src/core/Player.cpp -o obj/Player.o
+
+obj/Enemy.o: src/core/Enemy.cpp src/core/Enemy.h
+	g++ -g -Wall -c src/core/Enemy.cpp -o obj/Enemy.o
 
 obj/Stalactites.o: src/core/Stalactites.cpp src/core/Stalactites.h
 	g++ -g -Wall -c src/core/Stalactites.cpp -o obj/Stalactites.o

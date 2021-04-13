@@ -45,24 +45,32 @@ private :
     Image font_im;
     SDL_Color font_color;
 
-
-    Image imPlayer;
-    Image imPlatform;
-    Image imBackground;
-    Image imRunRight;
-    Image imRunLeft;
+    Image imBoutonRejouer;
     Image imMenuFond;
     Image imBoutonJoue;
     Image imBoutonQuitter;
     Image imTitre;
-    Image imJump;
-    Image imJump2;
+
+    Image imPlayerRight;
+    Image imPlayerLeft;
+    Image imRunRight;
+    Image imRunLeft;
+    Image imJumpRight;
+    Image imJumpLeft;
     Image imVie3;
     Image imVie2;
     Image imVie1;
     Image imVie0;
-    Image imStalactite;
 
+    Image imBackground;
+    Image imPlatform;
+    Image imStalactite;
+    Image imPlatformSpikeUp;
+    Image imPlatformSpikeDown;
+    Image imEnemyRight;
+    Image imEnemyLeft;
+    
+    bool dir; // 1 pour droite 0 pour gauche
     bool souris;
     bool touche;
 public :
@@ -70,7 +78,7 @@ public :
     sdlJeu ();
     ~sdlJeu ();
     void sdlBoucle ();
-    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed);
+    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed,bool mort);
 
 };
 

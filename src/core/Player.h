@@ -2,6 +2,7 @@
 #define _PLAYER_H
 
 #include "Map.h"
+#include "Const.h"
 
 /**
  * \file Player.h
@@ -15,7 +16,6 @@
  */
 class Player {
     private :
-        Coord coord;
         int velX, velY;
         bool isFalling;
 
@@ -23,6 +23,7 @@ class Player {
         int jumpcount;
         int vie;
         bool canMove;
+        Coord coord;
 
 
         /**

@@ -48,14 +48,12 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     if (!isFalling && jumpPressed && jumpcount >= JUMP) {
             jumpcount --;
     }
-    if (!isFalling && !jumpPressed && jumpcount < 0){
-                    velY = DISTJUMP;
-                    jumpcount ++;
-            }
-    if (isFalling && jumpcount < 0){
-                    velY = DISTJUMP;
-                    jumpcount ++;
-            }
+
+        if(((!isFalling && !jumpPressed) || isFalling) && jumpcount< 0){
+        velY = DISTJUMP;
+        jumpcount ++;
+    }
+
 
     if(m.isPosValid(posX, posY + velY, taille) && m.isPosValid(posX, posY+ velY +taille, taille)
        && m.isPosValid(posX+ taille/2, posY + velY, taille) && m.isPosValid(posX+ taille/2, posY+ velY +taille, taille)) posY = posY + velY;
