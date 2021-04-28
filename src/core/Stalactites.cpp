@@ -19,6 +19,13 @@ void Stalactites::operator=(const Stalactites& s) {
     this->hidden = s.hidden;
 }
 
+void Stalactites::cacherStalactites(const Map& m,Player& p,int taille)
+{
+    coord.setPosy(0);
+    coord.setPosx((rand()%m.getDimX())*taille);
+    hidden = true;
+}
+
 
 bool Stalactites::box(const Map& m, Player& p, int taille){
     return ((((p.coord.getPosx()/taille) == (coord.getPosx()/taille)) && ((p.coord.getPosy()/taille)==(coord.getPosy()/taille)))
@@ -28,12 +35,12 @@ bool Stalactites::box(const Map& m, Player& p, int taille){
         || ((((p.coord.getPosx()/taille) == (coord.getPosx()/taille)) && (((p.coord.getPosy()+ (1.75)*taille)/taille)==(coord.getPosy()/taille))))
         || ((((p.coord.getPosx()+taille/2)/taille) == (coord.getPosx()/taille)) && (((p.coord.getPosy()+ (1.75)*taille)/taille)==(coord.getPosy()/taille))));}
 
-void Stalactites::updateStalactite(const Map& m, Player& p, int taille) {
+void Stalactites::updateStalactite(const Map& m, Player& p, int ticks, int taille) {
     if(box(m,p,taille)){
         coord.setPosy(0);
         coord.setPosx((rand()%m.getDimX())*taille);
         hidden = true;
-        p.vie=p.vie-1;
+        p.attackPlayer(ticks);
     }else{
         if (coord.getPosy()<=m.getDimY()*32 - 2*32) {
         coord.setPosy(coord.getPosy() + 4);

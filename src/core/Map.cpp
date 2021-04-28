@@ -32,6 +32,14 @@ bool Map::isPosValid (Coord& pos, int taille) const {
 	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#'));
 }
 
+bool Map::isPosDangerous (int x, int y, int taille) const {
+	return ((mapTable[(int)x/taille][(int)(y + taille)/taille]=='^') || (mapTable[(int)x/taille][(int)(y)/taille]==';'));
+}
+
+bool Map::isPosDangerous (Coord& pos, int taille) const {
+	return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='^') || (mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy())/taille]==';'));
+}
+
 char Map::getXY (const int x, const int y) const {
     assert(x>=0);
 	assert(y>=0);

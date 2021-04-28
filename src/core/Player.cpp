@@ -12,7 +12,8 @@ Player::Player() {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
-    vie = 3;
+    health = 3;
+    immune = false;
     canMove = true;
 }
 
@@ -22,7 +23,8 @@ Player::Player (int posX, int posY) {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
-    vie = 3;
+    health = 3;
+    immune = false;
 }
 
 Player::Player (Coord& pos) {
@@ -31,10 +33,11 @@ Player::Player (Coord& pos) {
     velY = 0;
     isFalling = false;
     jumpcount = 0;
-    vie = 3;
+    health = 3;
+    immune = false;
 }
 
-void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int taille) {
+void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int ticks, int taille) {
     int posX = coord.getPosx();
     int posY = coord.getPosy();
     int dir =rightPressed - leftPressed;
@@ -77,6 +80,14 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
         jumpcount = 0;}
     if (posY > m.getDimY()*taille)
         coord.setPosy(m.getDimY()*taille);
+
+    if (immune && (ticks - start_immune > 3000)){
+        immune = false;
+    }
+
+    if(m.isPosDangerous(coord, taille)) {
+        attackPlayer(ticks);
+    }
 }
 
 void Player::left (const Map& m) {
@@ -118,3 +129,15 @@ void Player::checkIfFalling (const Map& m, int taille) {
 int Player::getPosX () const { return coord.getPosx(); }
 
 int Player::getPosY () const { return coord.getPosy(); }
+
+void Player::attackPlayer (int ticks) {
+    if (!immune) {
+        start_immune = ticks;
+        health --;
+        immune = true;
+    }
+}
+
+int Player::getHealth () const { return health;}
+
+void Player::setHealth (int health) {this->health = health;}

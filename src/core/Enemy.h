@@ -2,6 +2,7 @@
 #define _ENEMY_H
 
 #include "Map.h"
+#include "Player.h"
 #include "Const.h"
 
 /**
@@ -30,7 +31,8 @@ class Enemy {
 		Enemy(int posx, int posy);
 		Enemy(Coord& coord);
 		Enemy(Map & m);
-		void move(const Map& m, int taille);
+		bool box(const Map& m, Player& p, int taille);
+		void move(const Map& m,Player & p, int taille, int ticks);
 		bool willFall(const Map& m, int taille);
 	
 

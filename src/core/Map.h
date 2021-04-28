@@ -3,7 +3,7 @@
 
 #include "Coord.h"
 #include "Const.h"
-#include <vector>
+
 
 /**
  * \file Map.h
@@ -16,8 +16,8 @@ class Map {
     private:
 
         const int dimx = 30;
-        const int dimy = 38;
-        char mapTable [30][38];
+        const int dimy = 42;
+        char mapTable [30][42];
 
     public:
 
@@ -45,6 +45,20 @@ class Map {
          * \param taille: taille du "pixel" (optionnel)
          */
         bool isPosValid (Coord& pos, int taille = 1) const;
+        /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+        bool isPosDangerous (int x, int y, int taille = 1) const;
+        /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+        bool isPosDangerous (Coord& pos, int taille = 1) const;
         /**
          * \brief : Accesseur qui retourne la valeur stockée dans la mapTable aux coordonées passées en paramètres
          *

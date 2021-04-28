@@ -50,6 +50,7 @@ private :
     Image imBoutonJoue;
     Image imBoutonQuitter;
     Image imTitre;
+    Image imTitreMort;
 
     Image imPlayerRight;
     Image imPlayerLeft;
@@ -78,7 +79,7 @@ public :
     sdlJeu ();
     ~sdlJeu ();
     void sdlBoucle ();
-    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed,bool mort);
+    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool mort);
 
 };
 

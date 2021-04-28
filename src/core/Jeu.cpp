@@ -26,7 +26,8 @@ void Jeu::actionClavier (const char touche) {
 void Jeu::initJeu()	{
 	getPlayer().coord.setPosx(16);
     getPlayer().coord.setPosy(getConstMap().getDimY()*32 - 3*32);
-    getPlayer().vie=3; 
+    getPlayer().setHealth(3); 
+	getPlayer().immune = false; 
 	for(int i = 0; i < 5; i++)
     	setStalactite(i).coord.setPosx(rand()%map.getDimX() * 32);
 

@@ -176,6 +176,7 @@ sdlJeu::sdlJeu () : jeu() {
     
     //Menu
     imTitre.loadFromFile("data/letitre.png",renderer);
+    imTitreMort.loadFromFile("data/titremort.png",renderer);
     imMenuFond.loadFromFile("data/fondglace.png",renderer);
     imBoutonJoue.loadFromFile("data/play.png",renderer);
     imBoutonQuitter.loadFromFile("data/exit.png",renderer);
@@ -190,7 +191,7 @@ sdlJeu::~sdlJeu () {
     SDL_Quit();
 }
 
-void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool returnPressed,bool mort) {
+void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool mort) {
 	//Remplir l'�cran de blanc
     SDL_SetRenderDrawColor(renderer, 230, 240, 255, 255);
     SDL_RenderClear(renderer);
@@ -209,7 +210,7 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
         {
 			if (map.getXY(x,y)=='#')
 				imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
-            if (map.getXY(x,y)=='\'')
+            if (map.getXY(x,y)=='^')
 				imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)==';')
 				imPlatformSpikeDown.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
@@ -223,15 +224,17 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     }
 
 	// Afficher le sprite du joueur
-    if (jumpPressed){
-        if (dir) imJumpRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-        else imJumpLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-    }
-    else if (leftPressed) imRunLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-    else if (rightPressed) imRunRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-    else {
-        if (dir) imPlayerRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE,TAILLE_SPRITE*2);
-        else imPlayerLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE,TAILLE_SPRITE*2);
+    if ( (player.immune && SDL_GetTicks()%500>250) || !player.immune){
+        if (jumpPressed){
+            if (dir) imJumpRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+            else imJumpLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        }
+        else if (leftPressed) imRunLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        else if (rightPressed) imRunRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        else {
+            if (dir) imPlayerRight.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE,TAILLE_SPRITE*2);
+            else imPlayerLeft.draw(renderer,player.getPosX(),player.getPosY() - 1 - camera.y,TAILLE_SPRITE,TAILLE_SPRITE*2);
+        }
     }
 
     // Afficher le sprite de l'ennemi
@@ -241,20 +244,20 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
         imEnemyLeft.draw(renderer, enemy.coord.getPosx(), (enemy.coord.getPosy() - TAILLE_SPRITE) - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
     
     //afficher les points de vie
-    if(player.vie==0)
+    if(player.getHealth()<=0 && escapePressed==false)
     {
         imVie0.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
     }
     else
-    {if(player.vie==1){
+    {if(player.getHealth()==1 && escapePressed==false){
         imVie1.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
 
     }else{
-    if(player.vie==2){
+    if(player.getHealth()==2 && escapePressed==false){
         imVie2.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
     }
     else{
-    if(player.vie==3){
+    if(player.getHealth()==3 && escapePressed==false){
         imVie3.draw(renderer,0,0,TAILLE_SPRITE*3,TAILLE_SPRITE);
     }
     }
@@ -263,7 +266,7 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 
     if(escapePressed)
     {
-        imMenuFond.draw(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        //imMenuFond.draw(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         imBoutonJoue.draw(renderer, SCREEN_WIDTH/2-TAILLE_SPRITE*4,SCREEN_HEIGHT/6+TAILLE_SPRITE/2,TAILLE_SPRITE*8,TAILLE_SPRITE*4);
         imBoutonQuitter.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*2,SCREEN_HEIGHT/2-TAILLE_SPRITE/2,TAILLE_SPRITE*4,TAILLE_SPRITE*4);
         imTitre.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
@@ -271,10 +274,10 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 
     if(mort)
     {
-        imMenuFond.draw(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        //imMenuFond.draw(renderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         imBoutonRejouer.draw(renderer, SCREEN_WIDTH/2-TAILLE_SPRITE*4,SCREEN_HEIGHT/6+TAILLE_SPRITE/2,TAILLE_SPRITE*8,TAILLE_SPRITE*4);
         imBoutonQuitter.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*2,SCREEN_HEIGHT/2-TAILLE_SPRITE/2,TAILLE_SPRITE*4,TAILLE_SPRITE*4);
-        imTitre.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
+        imTitreMort.draw(renderer,SCREEN_WIDTH/2-TAILLE_SPRITE*8,TAILLE_SPRITE,TAILLE_SPRITE*16,TAILLE_SPRITE*2);
     }
 }
 
@@ -282,7 +285,7 @@ void sdlJeu::sdlBoucle () {
     SDL_Event events;
 	bool quit = false;
     bool leftPressed = false, rightPressed = false,
-    jumpPressed = false, escapePressed = true,returnPressed = false;
+    jumpPressed = false, escapePressed = true;
     Player player;
     bool enPause=true;
     bool mort = false;
@@ -306,6 +309,7 @@ void sdlJeu::sdlBoucle () {
                     {
                         if(events.button.x > SCREEN_WIDTH/2-TAILLE_SPRITE*4 && events.button.x< SCREEN_WIDTH/2+TAILLE_SPRITE*4 && events.button.y > SCREEN_HEIGHT/6 && events.button.y<SCREEN_HEIGHT/6+TAILLE_SPRITE*4)
                         {
+                           leftPressed = false,rightPressed = false, jumpPressed = false;
                            jeu.initJeu();
                            mort=false;
                         }
@@ -333,8 +337,9 @@ void sdlJeu::sdlBoucle () {
                     {
                         if(events.button.x > SCREEN_WIDTH/2-TAILLE_SPRITE*4 && events.button.x< SCREEN_WIDTH/2+TAILLE_SPRITE*4 && events.button.y > SCREEN_HEIGHT/6 && events.button.y<SCREEN_HEIGHT/6+TAILLE_SPRITE*4)
                         {
-                           enPause = false;
-                           escapePressed=false;
+                            leftPressed = false, rightPressed = false, jumpPressed = false;
+                            enPause = false;
+                            escapePressed=false;
 
                         }
                         else if(events.button.x >SCREEN_WIDTH/2-TAILLE_SPRITE*2 && events.button.x<SCREEN_WIDTH/2+TAILLE_SPRITE*2 && events.button.y > SCREEN_HEIGHT/2 && events.button.y<SCREEN_HEIGHT/2+TAILLE_SPRITE*4)
@@ -404,20 +409,34 @@ void sdlJeu::sdlBoucle () {
             }
         }
     }
+        //on traite le cas du jeu en pause
+        if(enPause){
+       	sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,mort);
+        }
 
+        //on traite le cas du jeu quand le personnage joueur est mort
+        else{
+        if(mort){
+        sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,mort);
+        for(int i=0; i<5; i++){
+            jeu.setStalactite(i).cacherStalactites(jeu.getConstMap(), jeu.getPlayer(), TAILLE_SPRITE);}
+        }
+
+        //on traite le cas du jeu du jeu en cours
+        else{
         //on vérifie si il est mort ou vivant
-        if(jeu.getPlayer().vie<=0){mort=true;}
+        if(jeu.getPlayer().getHealth()<=0){mort=true;}
 
         // on actualise la position du joueur
-        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed, TAILLE_SPRITE);
+        jeu.getPlayer().updatePlayerSdl(jeu.getConstMap(), rightPressed, leftPressed, jumpPressed, SDL_GetTicks(), TAILLE_SPRITE);
         
         // on actualise la position des stalactites
         for(int i=0; i<5; i++){
-            jeu.setStalactite(i).updateStalactite(jeu.getConstMap(), jeu.getPlayer(), TAILLE_SPRITE);
+            jeu.setStalactite(i).updateStalactite(jeu.getConstMap(), jeu.getPlayer(), SDL_GetTicks(), TAILLE_SPRITE);
         }
 
         // on actualise la position de l'ennemi
-        jeu.getEnemy().move(jeu.getConstMap(), TAILLE_SPRITE);
+        jeu.getEnemy().move(jeu.getConstMap(),jeu.getPlayer(), TAILLE_SPRITE, SDL_GetTicks());
 
         //on ajuste la position de la camera
         camera.y = jeu.getPlayer().getPosY() - SCREEN_HEIGHT / 2;
@@ -426,13 +445,14 @@ void sdlJeu::sdlBoucle () {
         
 
         // on affiche le jeu sur le buffer cach�
-	    sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,returnPressed,mort);
-
+	    sdlAff(rightPressed,jumpPressed,leftPressed,escapePressed,mort);
+        }
+        }
 		// on permute les deux buffers (cette fonction ne doit se faire qu'une seule fois dans la boucle)
         SDL_RenderPresent(renderer);
         SDL_Delay(30);
 
 	}
-
 }
+
 

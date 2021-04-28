@@ -27,9 +27,11 @@ class Stalactites {
     Stalactites (int posX);
     void operator=(const Stalactites& s);
 
-    void updateStalactite(const Map& m, Player& p, int taille = 1);
+    void updateStalactite(const Map& m, Player& p, int ticks, int taille = 1);
     void collisionPlayer(const Map& m,Player& p);
     bool box(const Map& m, Player& p, int taille = 1);
+    void cacherStalactites(const Map& m,Player& p,int taille = 1);
+
 };
 
 #endif

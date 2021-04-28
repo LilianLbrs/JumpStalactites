@@ -18,12 +18,18 @@ class Player {
     private :
         int velX, velY;
         bool isFalling;
+        int health;
+        
+        
 
     public :
         int jumpcount;
-        int vie;
         bool canMove;
         Coord coord;
+        bool immune;
+        int start_immune;
+
+        
 
 
         /**
@@ -51,7 +57,7 @@ class Player {
          * \param jumpPressed : vrai si espace est pressé, faux sinon
          * \param taille : taille de la "case"
          */
-        void updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int taille = 1);
+        void updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int ticks, int taille = 1);
         /**
          * \brief Vérifie si le joueur est dans le vide pour lui appliquer la gravité
          *
@@ -85,6 +91,18 @@ class Player {
          * \brief Accesseur qui retourne la position du joueur sur l'axe des ordonnées
          */
         int getPosY() const;
+        /**
+         * \brief Mutateur: diminue la vie du personnage et lui affecte une seconde d'invincibilité
+         */
+        void attackPlayer(int ticks);
+        /**
+         * \brief Accesseur: retourne la vie du personnage
+         */
+        int getHealth () const;
+        /**
+         * \brief Mutateur qui ajuste la vie du personnage
+         */
+        void setHealth (int health);
 };
 
 #endif
