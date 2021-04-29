@@ -66,11 +66,14 @@ private :
     Image imBackground;
     Image imPlatform;
     Image imSnowPlatform;
+    Image imFirePlatform;
+    Image imLavaPlatform;
     Image imStalactite;
     Image imPlatformSpikeUp;
     Image imPlatformSpikeDown;
     Image imEnemyRight;
     Image imEnemyLeft;
+    Image imFuntain;
     
     bool dir; // 1 pour droite 0 pour gauche
     bool souris;

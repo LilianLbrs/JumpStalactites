@@ -170,10 +170,13 @@ sdlJeu::sdlJeu () : jeu() {
     //World
     imPlatform.loadFromFile("data/platform.png",renderer);
     imSnowPlatform.loadFromFile("data/snowy_platform.png",renderer);
+    imFirePlatform.loadFromFile("data/fire_platform.png",renderer);
+    imLavaPlatform.loadFromFile("data/lava_platform.png",renderer);
     imBackground.loadFromFile("data/background.jpg",renderer);
     imStalactite.loadFromFile("data/IceSpike.png",renderer);
     imPlatformSpikeUp.loadFromFile("data/PlatformSpikeUp.png",renderer);
     imPlatformSpikeDown.loadFromFile("data/PlatformSpikeDown.png",renderer);
+    imFuntain.loadFromFile("data/funtain.png",renderer);
     
     //Menu
     imTitre.loadFromFile("data/letitre.png",renderer);
@@ -213,10 +216,16 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
                 imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)=='w')
                 imSnowPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)=='F')
+                imFirePlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)=='L')
+                imLavaPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)=='^')
 				imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)==';')
 				imPlatformSpikeDown.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)=='V')
+                imFuntain.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y-TAILLE_SPRITE*1.5,TAILLE_SPRITE*2.5,TAILLE_SPRITE*2.5);
         }
 
     //Afficher les sprites des stalactites

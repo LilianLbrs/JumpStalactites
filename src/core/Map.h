@@ -16,8 +16,9 @@ class Map {
     private:
 
         const int dimx = 30;
-        const int dimy = 42;
-        char mapTable [30][42];
+        const int dimy = 100;
+
+        char mapTable [30][100];
 
     public:
 
@@ -74,6 +75,14 @@ class Map {
          * \brief : Retourne la hauteur de la map
          */
         int getDimY () const;
+        /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de "V"
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+        bool isPosPowerupHealth (Coord& pos,int taille = 1) const;
+
 
 };
 

@@ -88,6 +88,10 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     if(m.isPosDangerous(coord, taille)) {
         attackPlayer(ticks);
     }
+
+    if(m.isPosPowerupHealth(coord, taille)){
+        health=+3;
+    }
 }
 
 void Player::left (const Map& m) {
