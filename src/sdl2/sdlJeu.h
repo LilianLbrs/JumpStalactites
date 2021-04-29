@@ -51,6 +51,7 @@ private :
     Image imBoutonQuitter;
     Image imTitre;
     Image imTitreMort;
+    Image imTitreWin;
 
     Image imPlayerRight;
     Image imPlayerLeft;
@@ -74,6 +75,9 @@ private :
     Image imEnemyRight;
     Image imEnemyLeft;
     Image imFuntain;
+    Image imClock;
+    Image imVictory;
+
     
     bool dir; // 1 pour droite 0 pour gauche
     bool souris;
@@ -83,7 +87,7 @@ public :
     sdlJeu ();
     ~sdlJeu ();
     void sdlBoucle ();
-    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool mort);
+    void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool mort,bool wins);
 
 };
 

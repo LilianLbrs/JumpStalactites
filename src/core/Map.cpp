@@ -57,6 +57,14 @@ bool Map::isPosPowerupHealth (Coord& pos,int taille) const{
     return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='V'));
 }
 
+bool Map::isPosPowerupTime (Coord& pos,int taille) const {
+	return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='T'));
+}
+
+bool Map::isPosWinning (Coord& pos,int taille) const{
+    return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='G'));
+}
+
 int Map::getDimX () const { return dimx; }
 
 int Map::getDimY () const {	return dimy; }

@@ -16,9 +16,9 @@ class Map {
     private:
 
         const int dimx = 30;
-        const int dimy = 100;
+        const int dimy = 200;
 
-        char mapTable [30][100];
+        char mapTable [30][200];
 
     public:
 
@@ -82,6 +82,20 @@ class Map {
          * \param taille: taille du "pixel" (optionnel)
          */
         bool isPosPowerupHealth (Coord& pos,int taille = 1) const;
+        /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) contient un caractère "T"
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+        bool isPosPowerupTime (Coord& pos,int taille = 1) const;
+        /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) correspond a la fin du jeu
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+        bool isPosWinning (Coord& pos,int taille = 1) const;
 
 
 };

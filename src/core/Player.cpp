@@ -15,6 +15,7 @@ Player::Player() {
     health = 3;
     immune = false;
     canMove = true;
+    win = false;
 }
 
 Player::Player (int posX, int posY) {
@@ -25,6 +26,7 @@ Player::Player (int posX, int posY) {
     jumpcount = 0;
     health = 3;
     immune = false;
+    win = false;
 }
 
 Player::Player (Coord& pos) {
@@ -35,6 +37,7 @@ Player::Player (Coord& pos) {
     jumpcount = 0;
     health = 3;
     immune = false;
+    win = false;
 }
 
 void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed, bool jumpPressed, int ticks, int taille) {
@@ -90,7 +93,20 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     }
 
     if(m.isPosPowerupHealth(coord, taille)){
-        health=+3;
+        health=3;
+    }
+
+    if (slow_time && (ticks - start_slow > 10000)){ // 10 secondes de temps ralenti
+        slow_time = false;
+    }
+
+    if(m.isPosPowerupTime(coord, taille)){
+        slow_time=true;
+        start_slow = ticks;
+    }
+
+    if(m.isPosWinning(coord,taille)){
+        win=true;
     }
 }
 

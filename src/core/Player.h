@@ -28,6 +28,9 @@ class Player {
         Coord coord;
         bool immune;
         int start_immune;
+        bool win = false;
+        bool slow_time = false;
+        int start_slow;
 
         
 

@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "Map.h"
 #include<iostream>
-#define SPEED 5
+#define SPEED 3
 
 Enemy::Enemy() {
     
