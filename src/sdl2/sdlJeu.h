@@ -65,6 +65,7 @@ private :
 
     Image imBackground;
     Image imPlatform;
+    Image imSnowPlatform;
     Image imStalactite;
     Image imPlatformSpikeUp;
     Image imPlatformSpikeDown;
