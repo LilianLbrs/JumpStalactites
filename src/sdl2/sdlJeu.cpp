@@ -209,11 +209,10 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 	for (x=0;x<map.getDimX();++x)
 		for (y=0;y<map.getDimY();++y)
         {
-			if (map.getXY(x,y)=='#'){
-                if (map.getXY(x,y - 1)=='w')
-                    imSnowPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
-                else imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
-            }
+			if (map.getXY(x,y)=='#')
+                imPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
+            if (map.getXY(x,y)=='w')
+                imSnowPlatform.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)=='^')
 				imPlatformSpikeUp.draw(renderer,x*TAILLE_SPRITE,y*TAILLE_SPRITE - camera.y,TAILLE_SPRITE,TAILLE_SPRITE);
             if (map.getXY(x,y)==';')

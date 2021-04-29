@@ -25,11 +25,12 @@ void Map::loadMapFromFile() {
 }
 
 bool Map::isPosValid (int x, int y, int taille) const {
-	return ((x/taille>=0) && (x/taille<dimx) && (y/taille>=0) && (y/taille<dimy) && (mapTable[(int)x/taille][(int)y/taille]!='#'));
+	return ((x/taille>=0) && (x/taille<dimx) && (y/taille>=0) && (y/taille<dimy) && (mapTable[(int)x/taille][(int)y/taille]!='#') && (mapTable[(int)x/taille][(int)y/taille]!='w'));
 }
 
 bool Map::isPosValid (Coord& pos, int taille) const {
-	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#'));
+	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) && 
+	(mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#') && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='w'));
 }
 
 bool Map::isPosDangerous (int x, int y, int taille) const {
