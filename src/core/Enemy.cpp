@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Map.h"
+#include<iostream>
 #define SPEED 5
 
 Enemy::Enemy() {
@@ -36,6 +37,21 @@ Enemy::Enemy(Map & m) {
     velX = 0;
     velY = 0;
 	dir = 0;
+}
+
+Enemy::Enemy(Map & m, vector<Enemy> vectEnemies){
+    createEnemies (m, vectEnemies);
+}
+
+void Enemy::createEnemies (const Map & m, vector<Enemy> & vectEnemies) {
+    for (int x=0;x<m.getDimX();++x)
+        for (int y=0;y<m.getDimY();++y){
+            if (m.getXY(x,y)=='!'){
+                Enemy *e = new Enemy(x*TAILLE_SPRITE, y*TAILLE_SPRITE);
+                vectEnemies.push_back(*e);
+			}
+        }
+
 }
 
 bool Enemy::box(const Map& m, Player& p, int taille){

@@ -4,6 +4,8 @@
 #include "Map.h"
 #include "Player.h"
 #include "Const.h"
+#include <vector>
+using namespace std;
 
 /**
  * \file Enemy.h
@@ -31,6 +33,8 @@ class Enemy {
 		Enemy(int posx, int posy);
 		Enemy(Coord& coord);
 		Enemy(Map & m);
+		Enemy(Map & m, vector<Enemy> vectEnemies);
+		void createEnemies (const Map & m, vector<Enemy> & vectEnemies);
 		bool box(const Map& m, Player& p, int taille);
 		void move(const Map& m,Player & p, int taille, int ticks);
 		bool willFall(const Map& m, int taille);

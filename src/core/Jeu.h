@@ -22,6 +22,7 @@ private :
     Map map;
     Player player;
     Stalactites stalactite [5];
+    vector<Enemy> vectEnemies;
     Enemy enemy;
 
 public :
@@ -60,7 +61,7 @@ public :
      /**
      * \brief Accesseur qui retourne l'ennemy
      */
-     Enemy& getEnemy ();
+     vector<Enemy>& getVectEnemies ();
     /**
      * \brief Procédure qui gère les actions automatiques du jeu (stalactites)
      *

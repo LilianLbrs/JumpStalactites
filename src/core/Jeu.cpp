@@ -1,8 +1,10 @@
 #include "Jeu.h"
 #include <time.h>
 #include <stdlib.h>
+#include <iostream>
 
 Jeu::Jeu () : map(), player(0, map.getDimY()*TAILLE_SPRITE - 3*TAILLE_SPRITE), enemy(map){
+	enemy.createEnemies(map, vectEnemies);
     for(int i = 0; i < 5; i++){
     setStalactite(i).coord.setPosx(rand()%map.getDimX() * TAILLE_SPRITE);
 	setStalactite(i).coord.setPosy(rand()%64*TAILLE_SPRITE);}
@@ -58,7 +60,7 @@ const Map& Jeu::getConstMap () const { return map; }
 const Player& Jeu::getConstPlayer () const { return player; }
 Player& Jeu::getPlayer () { return player; }
 
-Enemy& Jeu::getEnemy () { return enemy; }
+std::vector<Enemy>& Jeu::getVectEnemies () { return vectEnemies; }
 
 const Stalactites& Jeu::getStalactite(int i) const { return stalactite[i]; }
 Stalactites& Jeu::setStalactite(int i) {return stalactite[i];}

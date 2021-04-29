@@ -199,7 +199,7 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
 	int x,y;
 	const Map& map = jeu.getConstMap();
 	const Player& player = jeu.getConstPlayer();
-    const Enemy& enemy = jeu.getEnemy();
+    const vector<Enemy>& vectEnemies = jeu.getVectEnemies();
 
     //Afficher le background
     imBackground.drawBG(renderer, 0, 0, SCREEN_WIDTH, SCREEN_WIDTH);
@@ -238,11 +238,12 @@ void sdlJeu::sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool es
     }
 
     // Afficher le sprite de l'ennemi
-    if(enemy.dir)
-        imEnemyRight.draw(renderer, enemy.coord.getPosx(), (enemy.coord.getPosy() - TAILLE_SPRITE) - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-    else
-        imEnemyLeft.draw(renderer, enemy.coord.getPosx(), (enemy.coord.getPosy() - TAILLE_SPRITE) - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
-    
+    for(unsigned int i= 0; i < vectEnemies.size(); i++){
+        if(vectEnemies[i].dir)
+            imEnemyRight.draw(renderer, vectEnemies[i].coord.getPosx(), (vectEnemies[i].coord.getPosy() - TAILLE_SPRITE) - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+        else
+            imEnemyLeft.draw(renderer, vectEnemies[i].coord.getPosx(), (vectEnemies[i].coord.getPosy() - TAILLE_SPRITE) - camera.y,TAILLE_SPRITE*2,TAILLE_SPRITE*2);
+    }
     //afficher les points de vie
     if(player.getHealth()<=0 && escapePressed==false)
     {
@@ -436,7 +437,10 @@ void sdlJeu::sdlBoucle () {
         }
 
         // on actualise la position de l'ennemi
-        jeu.getEnemy().move(jeu.getConstMap(),jeu.getPlayer(), TAILLE_SPRITE, SDL_GetTicks());
+        vector<Enemy> & vectEnemies = jeu.getVectEnemies();
+        for(unsigned int i = 0; i < vectEnemies.size(); i++){
+            vectEnemies[i].move(jeu.getConstMap(),jeu.getPlayer(), TAILLE_SPRITE, SDL_GetTicks());
+        }
 
         //on ajuste la position de la camera
         camera.y = jeu.getPlayer().getPosY() - SCREEN_HEIGHT / 2;
