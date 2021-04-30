@@ -38,6 +38,7 @@ private :
 
 	Jeu jeu;
     int dimWindowX, dimWindowY;
+    unsigned int timer = 0;
 
     SDL_Window * window;
     SDL_Renderer * renderer;
