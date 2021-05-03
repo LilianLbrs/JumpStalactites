@@ -1,4 +1,4 @@
-#include "Player.h"
+ #include "Player.h"
 #include "Map.h"
 #define SPEED 16
 #define GRAVITY 8
@@ -13,8 +13,11 @@ Player::Player() {
     isFalling = false;
     jumpcount = 0;
     health = 3;
+    inertia = 0;
     immune = false;
     canMove = true;
+    slow_time = false;
+    icey = false;
     win = false;
 }
 
@@ -25,7 +28,10 @@ Player::Player (int posX, int posY) {
     isFalling = false;
     jumpcount = 0;
     health = 3;
+    inertia = 0;
     immune = false;
+    slow_time = false;
+    icey = false;
     win = false;
 }
 
@@ -36,6 +42,9 @@ Player::Player (Coord& pos) {
     isFalling = false;
     jumpcount = 0;
     health = 3;
+    inertia = 0;
+    slow_time = false;
+    icey = false;
     immune = false;
     win = false;
 }
@@ -44,7 +53,19 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
     int posX = coord.getPosx();
     int posY = coord.getPosy();
     int dir =rightPressed - leftPressed;
-    velX = dir * SPEED;
+
+    checkIfIcey(m, taille);
+
+    if(icey) {inertia += dir*1*SPEED;}
+
+    if (inertia > 2*SPEED){
+        inertia = 2*SPEED;}
+
+    if (inertia < -2*SPEED){
+        inertia = -2*SPEED;
+    }
+
+    velX = dir * SPEED + inertia;
     checkIfFalling(m, taille);
     velY = (isFalling) * GRAVITY;
 
@@ -83,6 +104,9 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
         jumpcount = 0;}
     if (posY > m.getDimY()*taille)
         coord.setPosy(m.getDimY()*taille);
+
+    if (inertia < 0){ inertia += SPEED/4;}
+    if (inertia > 0){ inertia -= SPEED/4;}
 
     if (immune && (ticks - start_immune > 3000)){
         immune = false;
@@ -144,6 +168,13 @@ void Player::checkIfFalling (const Map& m, int taille) {
         isFalling = true;
     }
     else isFalling = false;
+}
+
+void Player::checkIfIcey (const Map& m, int taille) {
+    if (m.isPosIcey(coord.getPosx(),coord.getPosy()+ taille, taille) && m.isPosIcey(coord.getPosx() + taille/2, coord.getPosy()+ taille, taille)){
+        icey = true;
+    }
+    else icey = false;
 }
 
 int Player::getPosX () const { return coord.getPosx(); }

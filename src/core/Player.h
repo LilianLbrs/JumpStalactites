@@ -19,8 +19,8 @@ class Player {
         int velX, velY;
         bool isFalling;
         int health;
-        
-        
+
+
 
     public :
         int jumpcount;
@@ -30,9 +30,11 @@ class Player {
         int start_immune;
         bool win = false;
         bool slow_time = false;
+        bool icey;
+        int inertia;
         int start_slow;
 
-        
+
 
 
         /**
@@ -65,8 +67,17 @@ class Player {
          * \brief Vérifie si le joueur est dans le vide pour lui appliquer la gravité
          *
          * \param m : Map utilisée
+         * \param taille : taille de la "case"
          */
         void checkIfFalling (const Map& m, int taille = 1);
+        /**
+         *
+         * \brief Verifie si le joueur est sur une plateforme glacée
+         *
+         * \param m: Map utilisée
+         * \param taille: taille de la "case"
+         */
+         void checkIfIcey (const Map& m, int taille = 1);
         /**
          * \brief Déplace le joueur à gauche (mode texte uniquement)
          *

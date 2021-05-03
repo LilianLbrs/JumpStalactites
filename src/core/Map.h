@@ -47,6 +47,21 @@ class Map {
          */
         bool isPosValid (Coord& pos, int taille = 1) const;
         /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée
+         *
+         * \param x : composante des abscisses
+         * \param y : composante des ordonnées
+         * \param taille: taille du "pixel" (optionnel)
+         */
+         bool isPosIcey (int x, int y, int taille = 1) const;
+         /**
+         * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée
+         *
+         * \param pos : coordonées de la position a vérifier
+         * \param taille: taille du "pixel" (optionnel)
+         */
+         bool isPosIcey (Coord& pos, int taille = 1) const;
+        /**
          * \brief : Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques
          *
          * \param pos : coordonées de la position a vérifier

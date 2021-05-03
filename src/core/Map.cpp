@@ -30,18 +30,24 @@ bool Map::isPosValid (int x, int y, int taille) const {
 }
 
 bool Map::isPosValid (Coord& pos, int taille) const {
-	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) && 
-	(mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#') && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='w') && 
+	return ((pos.getPosx()/taille>=0) && (pos.getPosx()/taille<dimx) && ((pos.getPosy()/taille)>=0) && ((pos.getPosy()/taille)<dimy) &&
+	(mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='#') && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='w') &&
 	(mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='L') && (mapTable[(int) pos.getPosx()/taille][(int) pos.getPosy()/taille]!='F'));
 }
 
+bool Map::isPosIcey (int x, int y, int taille) const {
+	return (mapTable[(int)x/taille][(int)(y + taille)/taille]=='w');}
+
+bool Map::isPosIcey (Coord& pos, int taille) const{
+return (mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='w');}
+
 bool Map::isPosDangerous (int x, int y, int taille) const {
-	return ((mapTable[(int)x/taille][(int)(y + taille)/taille]=='^') || (mapTable[(int)x/taille][(int)(y)/taille]==';') || 
+	return ((mapTable[(int)x/taille][(int)(y + taille)/taille]=='^') || (mapTable[(int)x/taille][(int)(y)/taille]==';') ||
 	(mapTable[(int)x/taille][(int)(y+2*taille)/taille]=='L'));
 }
 
 bool Map::isPosDangerous (Coord& pos, int taille) const {
-	return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='^') || (mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy())/taille]==';') 
+	return ((mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + taille)/taille]=='^') || (mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy())/taille]==';')
 	|| (mapTable[(int) pos.getPosx()/taille][(int) (pos.getPosy() + 2*taille)/taille]=='L'));
 }
 
