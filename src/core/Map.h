@@ -16,9 +16,9 @@ class Map {
     private:
 
         const int dimx = 30;
-        const int dimy = 200;
+        const int dimy = 223;
 
-        char mapTable [30][200];
+        char mapTable [30][223];
 
     public:
 

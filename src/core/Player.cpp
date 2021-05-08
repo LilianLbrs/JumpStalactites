@@ -58,11 +58,11 @@ void Player::updatePlayerSdl (const Map& m, bool rightPressed, bool leftPressed,
 
     if(icey) {inertia += dir*1*SPEED;}
 
-    if (inertia > 2*SPEED){
-        inertia = 2*SPEED;}
+    if (inertia > 1*SPEED){
+        inertia = 1*SPEED;}
 
-    if (inertia < -2*SPEED){
-        inertia = -2*SPEED;
+    if (inertia < -1*SPEED){
+        inertia = -1*SPEED;
     }
 
     velX = dir * SPEED + inertia;
