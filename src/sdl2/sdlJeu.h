@@ -7,7 +7,17 @@
 
 #include "../core/Jeu.h"
 
-//! \brief Pour g�rer une image avec SDL2
+/**
+ * \file sdlJeu.h
+ * \version 1.0
+ * \date 09/05/2021
+ * \brief Module gérant l'affichage d'une image, du jeu en version graphique et de la boucle d'évenements
+ */
+
+/**
+ * \class Image
+ * \brief Classe gérant une image avec SDL2
+ */
 class Image {
 
 private:
@@ -18,20 +28,55 @@ private:
 
 
 public:
+    /**
+     * \brief Constructeur par défaut de la classe Image
+    */
     Image () ;
+    /**
+     * \brief Fonction qui charge une image dans le renderer à partir d'un fichier
+     * \param filename Nom du fichier de l'image
+     * \param renderer Renderer SDL
+    */
     void loadFromFile (const char* filename, SDL_Renderer * renderer);
+    /**
+     * \brief Fonction qui charge une surface dans le renderer
+     * \param renderer Renderer SDL
+    */
     void loadFromCurrentSurface (SDL_Renderer * renderer);
+    /**
+     * \brief Fonction qui affiche une le renderer
+     * \param renderer Renderer SDL
+     * \param x Position des abscisses du début de l'image
+     * \param y Position des ordonnées du début de l'image
+     * \param w Largeur de l'image
+     * \param h Hauteur de l'image
+    */
     void draw (SDL_Renderer * renderer, int x, int y, int w=-1, int h=-1);
+    /**
+     * \brief Fonction qui affiche l'arrière plan
+     * \param renderer Renderer SDL
+     * \param x Position des abscisses du début de l'image
+     * \param y Position des ordonnées du début de l'image
+     * \param w Largeur de l'image
+     * \param h Hauteur de l'image
+    */
     void drawBG (SDL_Renderer * renderer, int x, int y, int w=-1, int h=-1);
+    /**
+     * \brief Accesseur qui retourne la texture courante
+    */
     SDL_Texture * getTexture() const;
+    /**
+     * \brief Mutateur qui modifie la surface courante
+     * \param surf Surface a importer
+    */
     void setSurface(SDL_Surface * surf);
 };
 
 
-
 /**
-    La classe g�rant le jeu avec un affichage SDL
-*/
+ * \class sdlJeu
+ * \brief La classe gérant le jeu avec un affichage SDL
+ */
 class sdlJeu {
 
 private :
@@ -85,9 +130,21 @@ private :
     bool touche;
 public :
 
+    /**
+     * \brief Constructeur par défaut de la classe sdlJeu
+    */
     sdlJeu ();
+    /**
+     * \brief Déstructeur par défaut de la classe sdlJeu
+    */
     ~sdlJeu ();
+    /**
+     * \brief Fonction qui gère la boucle d'évenements de la version graphique du jeu
+    */
     void sdlBoucle ();
+    /**
+     * \brief Fonction qui affiche tous les sprites à l'écran
+    */
     void sdlAff (bool leftPressed,bool jumpPressed,bool rightPressed,bool escapePressed,bool mort,bool wins);
 
 };

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JumpStalactites: C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/core/Coord.h Source File</title>
+<title>Jump Stalactites: src/core/Coord.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,11 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">JumpStalactites
+   <div id="projectname">Jump Stalactites
    </div>
-   <div id="projectbrief">JumpStalactites is a 2D platformer made in C++ with SDL2</div>
+   <div id="projectbrief">JumpStalactites est un jeu type Platformer en 2D qui utilise SDL2 pour l&#39;affichage graphique</div>
   </td>
  </tr>
  </tbody>
@@ -74,29 +73,29 @@ $(function() {
 <a href="_coord_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _COORD_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _COORD_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_coord.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_coord.html">Coord</a>{</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">int</span> position_X;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> position_Y;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx, <span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>(<span class="keyword">const</span> <a class="code" href="class_coord.html">Coord</a> &amp; pos);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_coord.html#ab4b14b8b2682b2051f07d4380ce8ebef">getPosx</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_coord.html#a8e26877e63f5e1c91d3e29938906fa14">getPosy</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#adac898e655e54893d428b26c32645ff6">setPos</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx, <span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#adac898e655e54893d428b26c32645ff6">setPos</a>(<span class="keyword">const</span> <a class="code" href="class_coord.html">Coord</a>&amp; pos);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#ae589d9200344527df1acb7a64d834264">setPosx</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#a2753a41fcf2f7712d8d7093ddab20b35">setPosy</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_coord_html"><div class="ttname"><a href="class_coord.html">Coord</a></div><div class="ttdef"><b>Definition:</b> Coord.h:10</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_coord.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_coord.html">Coord</a>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> position_X;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> position_Y;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx, <span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="class_coord.html#add896c4f3fb15b4ad762b5270855345c">Coord</a>(<span class="keyword">const</span> <a class="code" href="class_coord.html">Coord</a> &amp; pos);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_coord.html#ab4b14b8b2682b2051f07d4380ce8ebef">getPosx</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_coord.html#a8e26877e63f5e1c91d3e29938906fa14">getPosy</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#adac898e655e54893d428b26c32645ff6">setPos</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx, <span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#adac898e655e54893d428b26c32645ff6">setPos</a>(<span class="keyword">const</span> <a class="code" href="class_coord.html">Coord</a>&amp; pos);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#ae589d9200344527df1acb7a64d834264">setPosx</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posx);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_coord.html#a2753a41fcf2f7712d8d7093ddab20b35">setPosy</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> posy);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_coord_html"><div class="ttname"><a href="class_coord.html">Coord</a></div><div class="ttdoc">Classe gérant les coordonnées des éléments du jeu.</div><div class="ttdef"><b>Definition:</b> Coord.h:15</div></div>
 <div class="ttc" id="aclass_coord_html_a2753a41fcf2f7712d8d7093ddab20b35"><div class="ttname"><a href="class_coord.html#a2753a41fcf2f7712d8d7093ddab20b35">Coord::setPosy</a></div><div class="ttdeci">void setPosy(const int posy)</div><div class="ttdoc">Mutateur qui modifie la valeur des ordonnées.</div><div class="ttdef"><b>Definition:</b> Coord.cpp:33</div></div>
 <div class="ttc" id="aclass_coord_html_a8e26877e63f5e1c91d3e29938906fa14"><div class="ttname"><a href="class_coord.html#a8e26877e63f5e1c91d3e29938906fa14">Coord::getPosy</a></div><div class="ttdeci">int getPosy() const</div><div class="ttdoc">Accesseur qui retourne la valeur des ordonnées.</div><div class="ttdef"><b>Definition:</b> Coord.cpp:21</div></div>
 <div class="ttc" id="aclass_coord_html_ab4b14b8b2682b2051f07d4380ce8ebef"><div class="ttname"><a href="class_coord.html#ab4b14b8b2682b2051f07d4380ce8ebef">Coord::getPosx</a></div><div class="ttdeci">int getPosx() const</div><div class="ttdoc">Accesseur qui retourne la valeur des abscisses.</div><div class="ttdef"><b>Definition:</b> Coord.cpp:19</div></div>

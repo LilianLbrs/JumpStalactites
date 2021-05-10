@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['image_17',['Image',['../class_image.html',1,'']]],
-  ['isposvalid_18',['isPosValid',['../class_map.html#a222f431afac486fdacf75b5cb743ee50',1,'Map::isPosValid(int x, int y) const'],['../class_map.html#a0042492b8776849230e16a34e8977374',1,'Map::isPosValid(Coord &amp;pos) const']]]
+  ['draw_10',['draw',['../class_image.html#a82d6936d466ba0161d8b9cbacf613de5',1,'Image']]],
+  ['drawbg_11',['drawBG',['../class_image.html#a56d54ad074f71a6be0d8a78ab08718ec',1,'Image']]]
 ];

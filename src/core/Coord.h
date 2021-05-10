@@ -4,8 +4,13 @@
 /**
  * \file Coord.h
  * \brief Module gérant les coordonnées des éléments du jeu
- * \version 0.1
- * \date 20/03/2021
+ * \version 1.0
+ * \date 09/05/2021
+ */
+
+/**
+ * \class Coord
+ * \brief Classe gérant les coordonnées des éléments du jeu
  */
 class Coord{
 private:

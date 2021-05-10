@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['player_26',['Player',['../class_player.html',1,'Player'],['../class_player.html#affe0cc3cb714f6deb4e62f0c0d3f1fd8',1,'Player::Player()'],['../class_player.html#a5c6d83d937b583926f230e5623063fdc',1,'Player::Player(int posX, int posY)'],['../class_player.html#ad9e3d9a5d71c3aabc3c09fd3c64b7232',1,'Player::Player(Coord &amp;pos)']]],
-  ['player_2eh_27',['Player.h',['../_player_8h.html',1,'']]]
+  ['jeu_39',['Jeu',['../class_jeu.html',1,'Jeu'],['../class_jeu.html#acc5795ee00edf75516d3dfe65be3e6d6',1,'Jeu::Jeu()']]],
+  ['jeu_2eh_40',['Jeu.h',['../_jeu_8h.html',1,'']]],
+  ['jump_41',['jump',['../class_player.html#a9b916dba7251c233eb0be631e0115b9c',1,'Player']]]
 ];

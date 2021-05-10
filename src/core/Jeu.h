@@ -11,8 +11,13 @@
 /**
  * \file Jeu.h
  * \brief Module gérant la partie en cours
- * \version 0.1
- * \date 20/03/2021
+ * \version 1.0
+ * \date 09/05/2021
+ */
+
+/**
+ * \class Jeu
+ * \brief Classe gérant la partie en cours
  */
 
 class Jeu {
@@ -78,9 +83,13 @@ public :
      * \brief Initialise le personnage et les stalactites
      */
     void initJeu ();
-
+    /**
+     * \brief gère la gravité
+     */
     void gravity ();
-
+    /**
+     * \brief retourne la taille (abscisses) de la map
+     */
     int getDimMapX ();
 
 

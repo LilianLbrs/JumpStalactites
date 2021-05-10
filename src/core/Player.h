@@ -6,13 +6,14 @@
 
 /**
  * \file Player.h
- * \version 0.1
- * \date 20/03/2021
+ * \version 1.0
+ * \date 09/05/2021
+ * \brief Module gérant le joueur et ses déplacements
  */
 
 /**
  * \class Player
- * \brief Module gérant le joueur et ses déplacements
+ * \brief Classe gérant le joueur et ses déplacements
  */
 class Player {
     private :

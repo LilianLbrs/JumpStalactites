@@ -8,8 +8,13 @@
 /**
  * \file Map.h
  * \brief Module gérant la carte du jeu
- * \version 0.1
- * \date 20/03/2021
+ * \version 1.0
+ * \date 09/05/2021
+ */
+
+/**
+ * \class Map
+ * \brief Classe gérant la Map
  */
 
 class Map {

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JumpStalactites: sdlJeu Class Reference</title>
+<title>Jump Stalactites: sdlJeu Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,11 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">JumpStalactites
+   <div id="projectname">Jump Stalactites
    </div>
-   <div id="projectbrief">JumpStalactites is a 2D platformer made in C++ with SDL2</div>
+   <div id="projectbrief">JumpStalactites est un jeu type Platformer en 2D qui utilise SDL2 pour l&#39;affichage graphique</div>
   </td>
  </tr>
  </tbody>
@@ -71,25 +70,35 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>La classe gérant le jeu avec un affichage SDL.  
+ <a href="classsdl_jeu.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="sdl_jeu_8h_source.html">sdlJeu.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a06ba2075a4b592f6d0a2e268c29a044e"><td class="memItemLeft" align="right" valign="top"><a id="a06ba2075a4b592f6d0a2e268c29a044e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsdl_jeu.html#a06ba2075a4b592f6d0a2e268c29a044e">sdlJeu</a> ()</td></tr>
+<tr class="memdesc:a06ba2075a4b592f6d0a2e268c29a044e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut de la classe <a class="el" href="classsdl_jeu.html" title="La classe gérant le jeu avec un affichage SDL.">sdlJeu</a>. <br /></td></tr>
+<tr class="separator:a06ba2075a4b592f6d0a2e268c29a044e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bcd8f5ed17a2cea2ad2fc633415cbcc"><td class="memItemLeft" align="right" valign="top"><a id="a5bcd8f5ed17a2cea2ad2fc633415cbcc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsdl_jeu.html#a5bcd8f5ed17a2cea2ad2fc633415cbcc">~sdlJeu</a> ()</td></tr>
+<tr class="memdesc:a5bcd8f5ed17a2cea2ad2fc633415cbcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déstructeur par défaut de la classe <a class="el" href="classsdl_jeu.html" title="La classe gérant le jeu avec un affichage SDL.">sdlJeu</a>. <br /></td></tr>
+<tr class="separator:a5bcd8f5ed17a2cea2ad2fc633415cbcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5628835d7efcab056985c3aa3de56836"><td class="memItemLeft" align="right" valign="top"><a id="a5628835d7efcab056985c3aa3de56836"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sdlBoucle</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsdl_jeu.html#a5628835d7efcab056985c3aa3de56836">sdlBoucle</a> ()</td></tr>
+<tr class="memdesc:a5628835d7efcab056985c3aa3de56836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui gère la boucle d'évenements de la version graphique du jeu. <br /></td></tr>
 <tr class="separator:a5628835d7efcab056985c3aa3de56836"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedada55e3f96ba37493664d358dc7b60"><td class="memItemLeft" align="right" valign="top"><a id="aedada55e3f96ba37493664d358dc7b60"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sdlAff</b> ()</td></tr>
-<tr class="separator:aedada55e3f96ba37493664d358dc7b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad900faf2de53b82d9ae152f7c2b9c484"><td class="memItemLeft" align="right" valign="top"><a id="ad900faf2de53b82d9ae152f7c2b9c484"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>resizeWindow</b> (int windowWidth, int windowHeight)</td></tr>
-<tr class="separator:ad900faf2de53b82d9ae152f7c2b9c484"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9102251eb1085ccba954642462c36ce0"><td class="memItemLeft" align="right" valign="top"><a id="a9102251eb1085ccba954642462c36ce0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsdl_jeu.html#a9102251eb1085ccba954642462c36ce0">sdlAff</a> (bool leftPressed, bool jumpPressed, bool rightPressed, bool escapePressed, bool mort, bool wins)</td></tr>
+<tr class="memdesc:a9102251eb1085ccba954642462c36ce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui affiche tous les sprites à l'écran. <br /></td></tr>
+<tr class="separator:a9102251eb1085ccba954642462c36ce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>La classe g�rant le jeu avec un affichage SDL </p>
+<div class="textblock"><p>La classe gérant le jeu avec un affichage SDL. </p>
 </div><hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/sdl2/<a class="el" href="sdl_jeu_8h_source.html">sdlJeu.h</a></li>
-<li>C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/sdl2/sdlJeu.cpp</li>
+<li>src/sdl2/<a class="el" href="sdl_jeu_8h_source.html">sdlJeu.h</a></li>
+<li>src/sdl2/sdlJeu.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

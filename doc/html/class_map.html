@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JumpStalactites: Map Class Reference</title>
+<title>Jump Stalactites: Map Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,11 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">JumpStalactites
+   <div id="projectname">Jump Stalactites
    </div>
-   <div id="projectbrief">JumpStalactites is a 2D platformer made in C++ with SDL2</div>
+   <div id="projectbrief">JumpStalactites est un jeu type Platformer en 2D qui utilise SDL2 pour l&#39;affichage graphique</div>
   </td>
  </tr>
  </tbody>
@@ -70,23 +69,40 @@ $(function() {
 <div class="title">Map Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe gérant la <a class="el" href="class_map.html" title="Classe gérant la Map.">Map</a>.  
+ <a href="class_map.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_map_8h_source.html">Map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0f5ad0fd4563497b4214038cbca8b582"><td class="memItemLeft" align="right" valign="top"><a id="a0f5ad0fd4563497b4214038cbca8b582"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a0f5ad0fd4563497b4214038cbca8b582">Map</a> ()</td></tr>
-<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Constructeur par défaut de la classe <a class="el" href="class_map.html">Map</a>, coordonées dimx et dimy a modifier en meme temps que le fichier map.txt <br /></td></tr>
+<tr class="memdesc:a0f5ad0fd4563497b4214038cbca8b582"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Constructeur par défaut de la classe <a class="el" href="class_map.html" title="Classe gérant la Map.">Map</a>, coordonées dimx et dimy a modifier en meme temps que le fichier map.txt <br /></td></tr>
 <tr class="separator:a0f5ad0fd4563497b4214038cbca8b582"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b97dea8c2fcfd843a20a85015641391"><td class="memItemLeft" align="right" valign="top"><a id="a5b97dea8c2fcfd843a20a85015641391"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a5b97dea8c2fcfd843a20a85015641391">loadMapFromFile</a> ()</td></tr>
 <tr class="memdesc:a5b97dea8c2fcfd843a20a85015641391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les caractères du fichier map.txt dans la mapTable. <br /></td></tr>
 <tr class="separator:a5b97dea8c2fcfd843a20a85015641391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a222f431afac486fdacf75b5cb743ee50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a222f431afac486fdacf75b5cb743ee50">isPosValid</a> (int x, int y) const</td></tr>
-<tr class="memdesc:a222f431afac486fdacf75b5cb743ee50"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (caleurs entières) ne contient pas un caractère de mur ou de plateforme  <a href="class_map.html#a222f431afac486fdacf75b5cb743ee50">More...</a><br /></td></tr>
-<tr class="separator:a222f431afac486fdacf75b5cb743ee50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0042492b8776849230e16a34e8977374"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a0042492b8776849230e16a34e8977374">isPosValid</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos) const</td></tr>
-<tr class="memdesc:a0042492b8776849230e16a34e8977374"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de mur ou de plateforme  <a href="class_map.html#a0042492b8776849230e16a34e8977374">More...</a><br /></td></tr>
-<tr class="separator:a0042492b8776849230e16a34e8977374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87e7f66a2093cfad58a53d6fde9f6a5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a87e7f66a2093cfad58a53d6fde9f6a5c">isPosValid</a> (int x, int y, int taille=1) const</td></tr>
+<tr class="memdesc:a87e7f66a2093cfad58a53d6fde9f6a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (caleurs entières) ne contient pas un caractère de mur ou de plateforme  <a href="class_map.html#a87e7f66a2093cfad58a53d6fde9f6a5c">More...</a><br /></td></tr>
+<tr class="separator:a87e7f66a2093cfad58a53d6fde9f6a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a953893c578ee93578c9c9219eab9a95f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a953893c578ee93578c9c9219eab9a95f">isPosValid</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a953893c578ee93578c9c9219eab9a95f"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de mur ou de plateforme  <a href="class_map.html#a953893c578ee93578c9c9219eab9a95f">More...</a><br /></td></tr>
+<tr class="separator:a953893c578ee93578c9c9219eab9a95f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af40e6c58ab515227384bfa3c37896abd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#af40e6c58ab515227384bfa3c37896abd">isPosIcey</a> (int x, int y, int taille=1) const</td></tr>
+<tr class="memdesc:af40e6c58ab515227384bfa3c37896abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée  <a href="class_map.html#af40e6c58ab515227384bfa3c37896abd">More...</a><br /></td></tr>
+<tr class="separator:af40e6c58ab515227384bfa3c37896abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377fc97c71369d7ca3448ec41a918abf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a377fc97c71369d7ca3448ec41a918abf">isPosIcey</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a377fc97c71369d7ca3448ec41a918abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée  <a href="class_map.html#a377fc97c71369d7ca3448ec41a918abf">More...</a><br /></td></tr>
+<tr class="separator:a377fc97c71369d7ca3448ec41a918abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87e86fbd4939d3a2c51f675baaf5accc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a87e86fbd4939d3a2c51f675baaf5accc">isPosDangerous</a> (int x, int y, int taille=1) const</td></tr>
+<tr class="memdesc:a87e86fbd4939d3a2c51f675baaf5accc"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques  <a href="class_map.html#a87e86fbd4939d3a2c51f675baaf5accc">More...</a><br /></td></tr>
+<tr class="separator:a87e86fbd4939d3a2c51f675baaf5accc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7668fe699bfad48db4de6663febdb819"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a7668fe699bfad48db4de6663febdb819">isPosDangerous</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a7668fe699bfad48db4de6663febdb819"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques  <a href="class_map.html#a7668fe699bfad48db4de6663febdb819">More...</a><br /></td></tr>
+<tr class="separator:a7668fe699bfad48db4de6663febdb819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a988891fac3660f96ca3b205244a30406"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a988891fac3660f96ca3b205244a30406">getXY</a> (const int x, const int y) const</td></tr>
 <tr class="memdesc:a988891fac3660f96ca3b205244a30406"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Accesseur qui retourne la valeur stockée dans la mapTable aux coordonées passées en paramètres  <a href="class_map.html#a988891fac3660f96ca3b205244a30406">More...</a><br /></td></tr>
 <tr class="separator:a988891fac3660f96ca3b205244a30406"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,8 +114,19 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a1de1775f4a648f64d2310763dc10affe">getDimY</a> () const</td></tr>
 <tr class="memdesc:a1de1775f4a648f64d2310763dc10affe"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Retourne la hauteur de la map <br /></td></tr>
 <tr class="separator:a1de1775f4a648f64d2310763dc10affe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14baee5f252078bf6a8fb949bfe1d3af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a14baee5f252078bf6a8fb949bfe1d3af">isPosPowerupHealth</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a14baee5f252078bf6a8fb949bfe1d3af"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de "V"  <a href="class_map.html#a14baee5f252078bf6a8fb949bfe1d3af">More...</a><br /></td></tr>
+<tr class="separator:a14baee5f252078bf6a8fb949bfe1d3af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a885a93392f4f6f920eb658931efdaaae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a885a93392f4f6f920eb658931efdaaae">isPosPowerupTime</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a885a93392f4f6f920eb658931efdaaae"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) contient un caractère "T"  <a href="class_map.html#a885a93392f4f6f920eb658931efdaaae">More...</a><br /></td></tr>
+<tr class="separator:a885a93392f4f6f920eb658931efdaaae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a1890ea15fe3cf989593a234e663312"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_map.html#a4a1890ea15fe3cf989593a234e663312">isPosWinning</a> (<a class="el" href="class_coord.html">Coord</a> &amp;pos, int taille=1) const</td></tr>
+<tr class="memdesc:a4a1890ea15fe3cf989593a234e663312"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Vérifie si la position passée en paramètre (classe coord) correspond a la fin du jeu  <a href="class_map.html#a4a1890ea15fe3cf989593a234e663312">More...</a><br /></td></tr>
+<tr class="separator:a4a1890ea15fe3cf989593a234e663312"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe gérant la <a class="el" href="class_map.html" title="Classe gérant la Map.">Map</a>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a988891fac3660f96ca3b205244a30406"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a988891fac3660f96ca3b205244a30406">&#9670;&nbsp;</a></span>getXY()</h2>
 
@@ -137,8 +164,243 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 
 </div>
 </div>
-<a id="a0042492b8776849230e16a34e8977374"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0042492b8776849230e16a34e8977374">&#9670;&nbsp;</a></span>isPosValid() <span class="overload">[1/2]</span></h2>
+<a id="a7668fe699bfad48db4de6663febdb819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7668fe699bfad48db4de6663febdb819">&#9670;&nbsp;</a></span>isPosDangerous() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosDangerous </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a87e86fbd4939d3a2c51f675baaf5accc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87e86fbd4939d3a2c51f675baaf5accc">&#9670;&nbsp;</a></span>isPosDangerous() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosDangerous </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de piques </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a377fc97c71369d7ca3448ec41a918abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a377fc97c71369d7ca3448ec41a918abf">&#9670;&nbsp;</a></span>isPosIcey() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosIcey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af40e6c58ab515227384bfa3c37896abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af40e6c58ab515227384bfa3c37896abd">&#9670;&nbsp;</a></span>isPosIcey() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosIcey </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de plateforme glacée </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>: composante des abscisses </td></tr>
+    <tr><td class="paramname">y</td><td>: composante des ordonnées </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a14baee5f252078bf6a8fb949bfe1d3af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14baee5f252078bf6a8fb949bfe1d3af">&#9670;&nbsp;</a></span>isPosPowerupHealth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosPowerupHealth </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) ne contient pas un caractère de "V" </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a885a93392f4f6f920eb658931efdaaae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a885a93392f4f6f920eb658931efdaaae">&#9670;&nbsp;</a></span>isPosPowerupTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosPowerupTime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) contient un caractère "T" </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a953893c578ee93578c9c9219eab9a95f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a953893c578ee93578c9c9219eab9a95f">&#9670;&nbsp;</a></span>isPosValid() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,8 +409,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
           <td class="memname">bool Map::isPosValid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -157,14 +429,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a222f431afac486fdacf75b5cb743ee50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a222f431afac486fdacf75b5cb743ee50">&#9670;&nbsp;</a></span>isPosValid() <span class="overload">[2/2]</span></h2>
+<a id="a87e7f66a2093cfad58a53d6fde9f6a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87e7f66a2093cfad58a53d6fde9f6a5c">&#9670;&nbsp;</a></span>isPosValid() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +452,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -194,6 +473,44 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
   <table class="params">
     <tr><td class="paramname">x</td><td>: composante des abscisses </td></tr>
     <tr><td class="paramname">y</td><td>: composante des ordonnées </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a1890ea15fe3cf989593a234e663312"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a1890ea15fe3cf989593a234e663312">&#9670;&nbsp;</a></span>isPosWinning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Map::isPosWinning </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_coord.html">Coord</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>taille</em> = <code>1</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>: Vérifie si la position passée en paramètre (classe coord) correspond a la fin du jeu </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>: coordonées de la position a vérifier </td></tr>
+    <tr><td class="paramname">taille</td><td>taille du "pixel" (optionnel) </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,8 +518,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/core/<a class="el" href="_map_8h_source.html">Map.h</a></li>
-<li>C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/core/Map.cpp</li>
+<li>src/core/<a class="el" href="_map_8h_source.html">Map.h</a></li>
+<li>src/core/Map.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

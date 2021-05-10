@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['jeu_71',['Jeu',['../class_jeu.html#acc5795ee00edf75516d3dfe65be3e6d6',1,'Jeu']]],
-  ['jump_72',['jump',['../class_player.html#a9b916dba7251c233eb0be631e0115b9c',1,'Player']]]
+  ['enemy_101',['Enemy',['../class_enemy.html#a94f30d348b6d2840fd71675472ba38dd',1,'Enemy::Enemy()'],['../class_enemy.html#a906244f57e2861f62ec98c0c61657219',1,'Enemy::Enemy(int posx, int posy)'],['../class_enemy.html#ae45545cf7bcb26ea58bc80c9ee6419a3',1,'Enemy::Enemy(Coord &amp;coord)'],['../class_enemy.html#a7d4365a164dc15e73be8f2eb778fa29c',1,'Enemy::Enemy(Map &amp;m)'],['../class_enemy.html#a42f042ac8bafa31c245144b53d0fbbb8',1,'Enemy::Enemy(Map &amp;m, vector&lt; Enemy &gt; vectEnemies)']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wintxt_46',['WinTXT',['../class_win_t_x_t.html',1,'']]]
+  ['sdljeu_78',['sdlJeu',['../classsdl_jeu.html',1,'']]],
+  ['stalactites_79',['Stalactites',['../class_stalactites.html',1,'']]]
 ];

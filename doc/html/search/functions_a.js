@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['updateplayersdl_81',['updatePlayerSdl',['../class_player.html#a4f606768c09e14b74d7947081211242d',1,'Player']]]
+  ['operator_3d_135',['operator=',['../class_stalactites.html#a42b372cb77b249a2c7668d43cf2d252a',1,'Stalactites']]]
 ];

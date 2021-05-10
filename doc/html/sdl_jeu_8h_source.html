@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>JumpStalactites: C:/Users/Lilian/Documents/Shared/S4/LIFAP4/jump-stalactites-SDL/src/sdl2/sdlJeu.h Source File</title>
+<title>Jump Stalactites: src/sdl2/sdlJeu.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -20,11 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">JumpStalactites
+   <div id="projectname">Jump Stalactites
    </div>
-   <div id="projectbrief">JumpStalactites is a 2D platformer made in C++ with SDL2</div>
+   <div id="projectbrief">JumpStalactites est un jeu type Platformer en 2D qui utilise SDL2 pour l&#39;affichage graphique</div>
   </td>
  </tr>
  </tbody>
@@ -71,68 +70,110 @@ $(function() {
 <div class="title">sdlJeu.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SDLJEU_H</span></div>
+<a href="sdl_jeu_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _SDLJEU_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _SDLJEU_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;SDL.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;SDL_image.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../core/Jeu.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_image.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_image.html">Image</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    SDL_Surface * surface;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    SDL_Texture * texture;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> has_changed;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_image.html">Image</a> () ;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> loadFromFile (<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, SDL_Renderer * renderer);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> loadFromCurrentSurface (SDL_Renderer * renderer);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> draw (SDL_Renderer * renderer, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w=-1, <span class="keywordtype">int</span> h=-1);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    SDL_Texture * getTexture() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> setSurface(SDL_Surface * surf);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../core/Jeu.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_image.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_image.html">Image</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    SDL_Surface * surface;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    SDL_Texture * texture;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">bool</span> has_changed;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classsdl_jeu.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsdl_jeu.html">sdlJeu</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;private :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="class_jeu.html">Jeu</a> jeu;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> dimWindowX, dimWindowY;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    SDL_Window * window;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    SDL_Renderer * renderer;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="class_image.html">Image</a> font_im;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    SDL_Color font_color;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlayer;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlatform;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="class_image.html">Image</a> imBackground;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">bool</span> souris;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> touche;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;public :</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classsdl_jeu.html">sdlJeu</a> ();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ~<a class="code" href="classsdl_jeu.html">sdlJeu</a> ();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> sdlBoucle ();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> sdlAff ();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> resizeWindow(<span class="keywordtype">int</span> windowWidth, <span class="keywordtype">int</span> windowHeight);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_image_html"><div class="ttname"><a href="class_image.html">Image</a></div><div class="ttdef"><b>Definition:</b> sdlJeu.h:9</div></div>
-<div class="ttc" id="aclass_jeu_html"><div class="ttname"><a href="class_jeu.html">Jeu</a></div><div class="ttdef"><b>Definition:</b> Jeu.h:16</div></div>
-<div class="ttc" id="aclasssdl_jeu_html"><div class="ttname"><a href="classsdl_jeu.html">sdlJeu</a></div><div class="ttdef"><b>Definition:</b> sdlJeu.h:32</div></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_image.html#a58edd1c45b4faeb5f789b0d036d02313">Image</a> () ;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_image.html#aa276b5183099671ddeaf8f083068046c">loadFromFile</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* filename, SDL_Renderer * renderer);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_image.html#aee71e67e123b6fdd1d3c91caa2892792">loadFromCurrentSurface</a> (SDL_Renderer * renderer);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_image.html#a82d6936d466ba0161d8b9cbacf613de5">draw</a> (SDL_Renderer * renderer, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w=-1, <span class="keywordtype">int</span> h=-1);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_image.html#a56d54ad074f71a6be0d8a78ab08718ec">drawBG</a> (SDL_Renderer * renderer, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w=-1, <span class="keywordtype">int</span> h=-1);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    SDL_Texture * <a class="code" href="class_image.html#ae9e27e310b4322d04366f2882f3a4242">getTexture</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_image.html#a833f5d3b4b9f905320c6dffcc9b84b95">setSurface</a>(SDL_Surface * surf);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classsdl_jeu.html">   80</a></span>&#160;<span class="keyword">class </span><a class="code" href="classsdl_jeu.html">sdlJeu</a> {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;private :</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="class_jeu.html">Jeu</a> jeu;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> dimWindowX, dimWindowY;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> timer = 0;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    SDL_Window * window;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    SDL_Renderer * renderer;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="class_image.html">Image</a> font_im;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    SDL_Color font_color;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="class_image.html">Image</a> imBoutonRejouer;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="class_image.html">Image</a> imMenuFond;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="class_image.html">Image</a> imBoutonJoue;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="class_image.html">Image</a> imBoutonQuitter;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="class_image.html">Image</a> imTitre;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="class_image.html">Image</a> imTitreMort;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="class_image.html">Image</a> imTitreWin;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlayerRight;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlayerLeft;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="class_image.html">Image</a> imRunRight;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="class_image.html">Image</a> imRunLeft;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="class_image.html">Image</a> imJumpRight;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="class_image.html">Image</a> imJumpLeft;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="class_image.html">Image</a> imVie3;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="class_image.html">Image</a> imVie2;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="class_image.html">Image</a> imVie1;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="class_image.html">Image</a> imVie0;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="class_image.html">Image</a> imBackground;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlatform;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="class_image.html">Image</a> imSnowPlatform;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="class_image.html">Image</a> imFirePlatform;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="class_image.html">Image</a> imLavaPlatform;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="class_image.html">Image</a> imStalactite;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlatformSpikeUp;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="class_image.html">Image</a> imPlatformSpikeDown;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="class_image.html">Image</a> imEnemyRight;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="class_image.html">Image</a> imEnemyLeft;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="class_image.html">Image</a> imFuntain;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="class_image.html">Image</a> imClock;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="class_image.html">Image</a> imVictory;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordtype">bool</span> dir; <span class="comment">// 1 pour droite 0 pour gauche</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">bool</span> souris;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordtype">bool</span> touche;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;public :</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="classsdl_jeu.html#a06ba2075a4b592f6d0a2e268c29a044e">sdlJeu</a> ();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="classsdl_jeu.html#a5bcd8f5ed17a2cea2ad2fc633415cbcc">~sdlJeu</a> ();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsdl_jeu.html#a5628835d7efcab056985c3aa3de56836">sdlBoucle</a> ();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classsdl_jeu.html#a9102251eb1085ccba954642462c36ce0">sdlAff</a> (<span class="keywordtype">bool</span> leftPressed,<span class="keywordtype">bool</span> jumpPressed,<span class="keywordtype">bool</span> rightPressed,<span class="keywordtype">bool</span> escapePressed,<span class="keywordtype">bool</span> mort,<span class="keywordtype">bool</span> wins);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_image_html"><div class="ttname"><a href="class_image.html">Image</a></div><div class="ttdoc">Classe gérant une image avec SDL2.</div><div class="ttdef"><b>Definition:</b> sdlJeu.h:21</div></div>
+<div class="ttc" id="aclass_image_html_a56d54ad074f71a6be0d8a78ab08718ec"><div class="ttname"><a href="class_image.html#a56d54ad074f71a6be0d8a78ab08718ec">Image::drawBG</a></div><div class="ttdeci">void drawBG(SDL_Renderer *renderer, int x, int y, int w=-1, int h=-1)</div><div class="ttdoc">Fonction qui affiche l'arrière plan.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:78</div></div>
+<div class="ttc" id="aclass_image_html_a58edd1c45b4faeb5f789b0d036d02313"><div class="ttname"><a href="class_image.html#a58edd1c45b4faeb5f789b0d036d02313">Image::Image</a></div><div class="ttdeci">Image()</div><div class="ttdoc">Constructeur par défaut de la classe Image.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:16</div></div>
+<div class="ttc" id="aclass_image_html_a82d6936d466ba0161d8b9cbacf613de5"><div class="ttname"><a href="class_image.html#a82d6936d466ba0161d8b9cbacf613de5">Image::draw</a></div><div class="ttdeci">void draw(SDL_Renderer *renderer, int x, int y, int w=-1, int h=-1)</div><div class="ttdoc">Fonction qui affiche une le renderer.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:60</div></div>
+<div class="ttc" id="aclass_image_html_a833f5d3b4b9f905320c6dffcc9b84b95"><div class="ttname"><a href="class_image.html#a833f5d3b4b9f905320c6dffcc9b84b95">Image::setSurface</a></div><div class="ttdeci">void setSurface(SDL_Surface *surf)</div><div class="ttdoc">Mutateur qui modifie la surface courante.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:98</div></div>
+<div class="ttc" id="aclass_image_html_aa276b5183099671ddeaf8f083068046c"><div class="ttname"><a href="class_image.html#aa276b5183099671ddeaf8f083068046c">Image::loadFromFile</a></div><div class="ttdeci">void loadFromFile(const char *filename, SDL_Renderer *renderer)</div><div class="ttdoc">Fonction qui charge une image dans le renderer à partir d'un fichier.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:22</div></div>
+<div class="ttc" id="aclass_image_html_ae9e27e310b4322d04366f2882f3a4242"><div class="ttname"><a href="class_image.html#ae9e27e310b4322d04366f2882f3a4242">Image::getTexture</a></div><div class="ttdeci">SDL_Texture * getTexture() const</div><div class="ttdoc">Accesseur qui retourne la texture courante.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:96</div></div>
+<div class="ttc" id="aclass_image_html_aee71e67e123b6fdd1d3c91caa2892792"><div class="ttname"><a href="class_image.html#aee71e67e123b6fdd1d3c91caa2892792">Image::loadFromCurrentSurface</a></div><div class="ttdeci">void loadFromCurrentSurface(SDL_Renderer *renderer)</div><div class="ttdoc">Fonction qui charge une surface dans le renderer.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:51</div></div>
+<div class="ttc" id="aclass_jeu_html"><div class="ttname"><a href="class_jeu.html">Jeu</a></div><div class="ttdoc">Classe gérant la partie en cours.</div><div class="ttdef"><b>Definition:</b> Jeu.h:23</div></div>
+<div class="ttc" id="aclasssdl_jeu_html"><div class="ttname"><a href="classsdl_jeu.html">sdlJeu</a></div><div class="ttdoc">La classe gérant le jeu avec un affichage SDL.</div><div class="ttdef"><b>Definition:</b> sdlJeu.h:80</div></div>
+<div class="ttc" id="aclasssdl_jeu_html_a06ba2075a4b592f6d0a2e268c29a044e"><div class="ttname"><a href="classsdl_jeu.html#a06ba2075a4b592f6d0a2e268c29a044e">sdlJeu::sdlJeu</a></div><div class="ttdeci">sdlJeu()</div><div class="ttdoc">Constructeur par défaut de la classe sdlJeu.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:122</div></div>
+<div class="ttc" id="aclasssdl_jeu_html_a5628835d7efcab056985c3aa3de56836"><div class="ttname"><a href="classsdl_jeu.html#a5628835d7efcab056985c3aa3de56836">sdlJeu::sdlBoucle</a></div><div class="ttdeci">void sdlBoucle()</div><div class="ttdoc">Fonction qui gère la boucle d'évenements de la version graphique du jeu.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:329</div></div>
+<div class="ttc" id="aclasssdl_jeu_html_a5bcd8f5ed17a2cea2ad2fc633415cbcc"><div class="ttname"><a href="classsdl_jeu.html#a5bcd8f5ed17a2cea2ad2fc633415cbcc">sdlJeu::~sdlJeu</a></div><div class="ttdeci">~sdlJeu()</div><div class="ttdoc">Déstructeur par défaut de la classe sdlJeu.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:195</div></div>
+<div class="ttc" id="aclasssdl_jeu_html_a9102251eb1085ccba954642462c36ce0"><div class="ttname"><a href="classsdl_jeu.html#a9102251eb1085ccba954642462c36ce0">sdlJeu::sdlAff</a></div><div class="ttdeci">void sdlAff(bool leftPressed, bool jumpPressed, bool rightPressed, bool escapePressed, bool mort, bool wins)</div><div class="ttdoc">Fonction qui affiche tous les sprites à l'écran.</div><div class="ttdef"><b>Definition:</b> sdlJeu.cpp:201</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
