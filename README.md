@@ -3,7 +3,7 @@ JumpStalactites est un jeu type Platformer en 2D qui utilise SDL2 pour l'afficha
 Ce jeu est développé par Anthony Gonzalez, Alexandre Azouri et Lilian Labrosse dans le cadre de l'Unité d'Enseignement LIFAP4 (Université Lyon 1).
 
 # Vidéo de présentation :
-![](Blockudoku-presentation.gif)
+![](JumpStalactites-presentation.gif)
 
 # Description des fichiers :
 
